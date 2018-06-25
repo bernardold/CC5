@@ -1,0 +1,16 @@
+#
+#Wed Dec 09 04:36:27 EST 2015
+style=bold
+alphabet=
+color=\#333333
+stroke.color=\#ffffff
+shadow.y=0
+family=SansSerif
+shadow.x=0
+shadow.color=\#000000
+gradient.offset=21
+shadow.blur=0
+chars=all
+stroke.size=2
+antialias=true
+size=60
