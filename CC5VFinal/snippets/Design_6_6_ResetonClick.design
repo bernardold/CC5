@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<groups>
+    <group eventID="1" id="0">
+        <step comment="false" x="15" y="15">
+            <group eventID="-1" id="-1">
+                <if comment="false" x="26" y="40">
+                    <group eventID="-1" id="-1">
+                        <apply-filter comment="false" x="37" y="78">
+                            <ACTOR eid="this" id="0"/>
+                            <filter-negative comment="false" id="1" x="0" y="0"/>
+                        </apply-filter>
+                        <scene-reload-new comment="false" x="37" y="110">
+                            <int id="0" val="0"/>
+                            <int id="1" val="3"/>
+                            <int id="2" val="0"/>
+                            <int id="3" val="1"/>
+                        </scene-reload-new>
+                        <dolater comment="false" x="37" y="137">
+                            <group eventID="1" id="-1">
+                                <clear-filter comment="false" x="48" y="164">
+                                    <ACTOR eid="this" id="0"/>
+                                </clear-filter>
+                            </group>
+                            <int id="0" val="3"/>
+                            <ACTOR eid="this" id="2"/>
+                        </dolater>
+                    </group>
+                    <and comment="false" id="0" x="0" y="0">
+                        <amousestate comment="false" id="0" x="0" y="0">
+                            <ACTOR eid="this" id="0"/>
+                            <int id="1" val="1"/>
+                        </amousestate>
+                        <not comment="false" id="1" x="0" y="0">
+                            <is-transitioning comment="false" id="0" x="0" y="0"/>
+                        </not>
+                    </and>
+                </if>
+            </group>
+        </step>
+    </group>
+    <group eventID="1" id="1">
+        <scene-reload-new comment="false" x="0" y="299">
+            <int id="0" val="0"/>
+            <int id="1" val="3"/>
+            <int id="2" val="0"/>
+            <int id="3" val="1"/>
+        </scene-reload-new>
+    </group>
+    <group eventID="1" id="-1"/>
+</groups>

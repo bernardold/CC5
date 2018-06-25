@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pack>
+    <snippet attachedevent="false" class="scripts.Design_0_0_4WayMovement" classname="scripts.Design_0_0_4WayMovement" desc="Allows the player to move in 4 directions: North, South, West,and  East&#10;Allows the player to move in 8 directions: North, South, West, East, NorthWest, NorthEast, SouthWest, SouthEast&#10;Allows the player to move isometrically." description="Allows the player to move in 4 directions: North, South, West,and  East&#10;Allows the player to move in 8 directions: North, South, West, East, NorthWest, NorthEast, SouthWest, SouthEast&#10;Allows the player to move isometrically." design="true" drawOrder="0" id="0" name="4 Way Movement" oid="-1" package="" scenespecific="false" shared="false" type="actor">
+        <actor default="thisactor" defaultValue="thisactor" desc="" dropdown="" fullname="Actor" hidden="true" id="2147483647" name="actor" order="24"/>
+        <animation default="" defaultValue="" desc="" dropdown="" fullname="Up Animation" hidden="false" id="1" name="animUp" order="17"/>
+        <animation default="" defaultValue="" desc="" dropdown="" fullname="Down Animation" hidden="false" id="2" name="animDown" order="19"/>
+        <animation default="" defaultValue="" desc="" dropdown="" fullname="Left Animation" hidden="false" id="3" name="animLeft" order="21"/>
+        <animation default="" defaultValue="" desc="" dropdown="" fullname="Right Animation" hidden="false" id="4" name="animRight" order="23"/>
+        <control default="" defaultValue="" desc="" dropdown="" fullname="Up Control" hidden="false" id="5" name="controlUp" order="12"/>
+        <control default="" defaultValue="" desc="" dropdown="" fullname="Down Control" hidden="false" id="6" name="controlDown" order="13"/>
+        <control default="" defaultValue="" desc="" dropdown="" fullname="Left Control" hidden="false" id="7" name="controlLeft" order="14"/>
+        <control default="" defaultValue="" desc="" dropdown="" fullname="Right Control" hidden="false" id="8" name="controlRight" order="15"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="Up=1&#10;Down=2&#10;Left=3&#10;Right=4" fullname="Initial Direction" hidden="false" id="9" name="dir" order="7"/>
+        <number default="50" defaultValue="50" desc="How fast it reaches top speed." dropdown="" fullname="Acceleration" hidden="false" id="10" name="accel" order="8"/>
+        <number default="18" defaultValue="18" desc="The fastest it will move." dropdown="" fullname="Top Speed" hidden="false" id="11" name="topSpeed" order="10"/>
+        <number default="0" defaultValue="0" desc="How quickly it loses speed when the key's let go." dropdown="" fullname="Slowdown Rate" hidden="false" id="12" name="decel" order="11"/>
+        <animation default="" defaultValue="" desc="" dropdown="" fullname="Up Animation (Idle)" hidden="false" id="13" name="ianimUp" order="16"/>
+        <animation default="" defaultValue="" desc="" dropdown="" fullname="Down Animation (Idle)" hidden="false" id="14" name="ianimDown" order="18"/>
+        <animation default="" defaultValue="" desc="" dropdown="" fullname="Left Animation (Idle)" hidden="false" id="15" name="ianimLeft" order="20"/>
+        <animation default="" defaultValue="" desc="" dropdown="" fullname="Right Animation (Idle)" hidden="false" id="16" name="ianimRight" order="22"/>
+        <boolean default="true" defaultValue="true" desc="Check this if you want this actor to be controlled by the player." dropdown="" fullname="Player Controlled?" hidden="false" id="17" name="player" order="4"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="Pressed Left?" hidden="true" id="18" name="pressedLeft" order="2"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="Pressed Right?" hidden="true" id="19" name="pressedRight" order="3"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="Pressed Up?" hidden="true" id="20" name="pressedUp" order="0"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="Pressed Down?" hidden="true" id="21" name="pressedDown" order="1"/>
+        <number default="0.03" defaultValue="0.03" desc="Speed below which we display the &quot;idle&quot; animation." dropdown="" fullname="Idle Threshold" hidden="false" id="22" name="idleSpeed" order="9"/>
+        <boolean default="false" defaultValue="false" desc="Check this if you want your character to move isometrically." dropdown="" fullname="Isometric Movement?" hidden="false" id="23" name="_IsometricMovement" order="5"/>
+        <boolean default="false" defaultValue="false" desc="Check this to allow 8-way movement.&#10;An actor cannot move both isometrically and 8 ways." dropdown="" fullname="8 Way Movement?" hidden="false" id="24" name="_8WayMovement" order="6"/>
+        <blocks/>
+        <events>
+            <event displayName="checkInput" enabled="true" id="1" name="event-custom" order="1" repeats="true"/>
+            <event displayName="moveRight" enabled="true" id="2" name="event-custom" order="2" repeats="true"/>
+            <event displayName="moveDown" enabled="true" id="3" name="event-custom" order="3" repeats="true"/>
+            <event displayName="moveUp" enabled="true" id="4" name="event-custom" order="4" repeats="true"/>
+            <event displayName="Updated" enabled="true" id="5" name="step" order="5" repeats="true"/>
+            <event displayName="moveLeft" enabled="true" id="6" name="event-custom" order="6" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.SceneEvents_0" classname="scripts.SceneEvents_0" desc="Scene Specific Events" description="Scene Specific Events" design="true" drawOrder="0" id="1" name="SceneEvents_0" oid="-1" package="scripts." sceneid="0" scenespecific="true" shared="false" type="scene">
+        <number default="25.0" defaultValue="25.0" desc="" dropdown="" fullname="RegionRadius" hidden="false" id="1" name="_RegionRadius" order="0"/>
+        <text default="Game Over !!" defaultValue="Game Over !!" desc="" dropdown="" fullname="GameOverMessege" hidden="false" id="2" name="_GameOverMessege" order="1"/>
+        <number default="3.0" defaultValue="3.0" desc="" dropdown="" fullname="ReloadTime" hidden="false" id="3" name="_ReloadTime" order="2"/>
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_3" classname="scripts.ActorEvents_3" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="2" name="ActorEvents_3" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <number default="5.0" defaultValue="5.0" desc="" dropdown="" fullname="StationLimit" hidden="false" id="1" name="_StationLimit" order="0"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="CurrentNumberOfStation" hidden="false" id="2" name="_CurrentNumberOfStation" order="1"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="XPositionCC5" hidden="false" id="3" name="_XPositionCC5" order="2"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="YPositionCC5" hidden="false" id="4" name="_YPositionCC5" order="3"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="LifePoints" hidden="false" id="5" name="_LifePoints" order="5"/>
+        <number default="198.0" defaultValue="198.0" desc="" dropdown="" fullname="XScreenLimit" hidden="false" id="6" name="_XScreenLimit" order="6"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="HasPermitionToDropStation" hidden="false" id="7" name="_HasPermitionToDropStation" order="7"/>
+        <region default="" defaultValue="" desc="" dropdown="" fullname="CurrentRegion" hidden="false" id="8" name="_CurrentRegion" order="8"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="isInARegion" hidden="false" id="9" name="_isInARegion" order="9"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="loopOver" hidden="false" id="10" name="_loopOver" order="4"/>
+        <blocks>
+            <receiver blockID="22" id="1"/>
+        </blocks>
+        <events/>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_7" classname="scripts.ActorEvents_7" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="4" name="ActorEvents_7" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <number default="10.0" defaultValue="10.0" desc="" dropdown="" fullname="PowerStationLifePoints" hidden="false" id="1" name="_PowerStationLifePoints" order="0"/>
+        <actor default="" defaultValue="" desc="" dropdown="" fullname="Myself" hidden="false" id="2" name="_Myself" order="1"/>
+        <blocks/>
+        <events>
+            <event displayName="AddinnSelfToListOfStations" enabled="false" id="1" name="init" order="1" repeats="true"/>
+            <event displayName="RemovingSelfFromListOfStations" enabled="false" id="2" name="event-actor-create-kill" order="2" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_6_6_ResetonClick" classname="scripts.Design_6_6_ResetonClick" desc="" description="" design="true" drawOrder="0" id="6" name="Reset on Click" oid="-1" package="" scenespecific="false" shared="false" type="actor">
+        <actor default="thisactor" defaultValue="thisactor" desc="" dropdown="" fullname="Actor" hidden="true" id="2147483647" name="actor" order="2147483647"/>
+        <blocks/>
+        <events>
+            <event displayName="Updated" enabled="true" id="1" name="step" order="1" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_15" classname="scripts.ActorEvents_15" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="8" name="ActorEvents_15" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <blocks/>
+        <events>
+            <event displayName="makingActive" enabled="true" id="1" name="init" order="1" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_17" classname="scripts.ActorEvents_17" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="9" name="ActorEvents_17" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <blocks/>
+        <events>
+            <event displayName="KillSelfAfterLeaveScene" enabled="true" id="1" name="event-actor-screen" order="1" repeats="true"/>
+            <event displayName="KillSefAfterColidingWithStation" enabled="true" id="2" name="event-collide-actortotype" order="3" repeats="true"/>
+            <event displayName="KillSelfAfterColidingWithCC5" enabled="true" id="3" name="event-collide-actortotype" order="5" repeats="true"/>
+            <event displayName="AdjustingLayer" enabled="true" id="4" name="init" order="2" repeats="true"/>
+            <event displayName="KillSelfWhenHitsShooter" enabled="true" id="5" name="event-collide-actortotype" order="4" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_10_10_EnemieAttackBehavior" classname="scripts.Design_10_10_EnemieAttackBehavior" desc="" description="" design="true" drawOrder="0" id="10" name="EnemieAttackBehavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="actor">
+        <actor default="thisactor" defaultValue="thisactor" desc="" dropdown="" fullname="Actor" hidden="true" id="2147483647" name="actor" order="0"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="RelativeDistanceToCC5" hidden="true" id="1" name="_RelativeDistanceToCC5" order="1"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="AttackCC5" hidden="true" id="2" name="_AttackCC5" order="2"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="AttackStation" hidden="true" id="3" name="_AttackStation" order="3"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="Wandering" hidden="true" id="4" name="_Wandering" order="4"/>
+        <number default="2000" defaultValue="2000" desc="" dropdown="" fullname="RelativeDistanceToClosestStation" hidden="true" id="5" name="_RelativeDistanceToClosestStation" order="5"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="AuxiliarToCalculateDistance" hidden="true" id="6" name="_AuxiliarToCalculateDistance" order="6"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="XofStationOnTheList" hidden="true" id="7" name="_XofStationOnTheList" order="7"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="YofStationOnTheList" hidden="true" id="8" name="_YofStationOnTheList" order="8"/>
+        <actor default="" defaultValue="" desc="" dropdown="" fullname="StationToFollow" hidden="true" id="9" name="_StationToFollow" order="9"/>
+        <number default="215" defaultValue="215" desc="" dropdown="" fullname="InRangeToAttackCC5" hidden="false" id="10" name="_InRangeToAttackCC5" order="10"/>
+        <number default="170" defaultValue="170" desc="" dropdown="" fullname="InRangeToAttackStation" hidden="false" id="11" name="_InRangeToAttackStation" order="11"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="ShootingForce" hidden="false" id="12" name="_ShootingForce" order="12"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="Shooting" hidden="true" id="13" name="_Shooting" order="13"/>
+        <number default="2" defaultValue="2" desc="" dropdown="" fullname="ShootingWaitTime" hidden="false" id="14" name="_ShootingWaitTime" order="14"/>
+        <number default="198.0" defaultValue="198.0" desc="" dropdown="" fullname="XScreenLimit" hidden="false" id="15" name="_XScreenLimit" order="15"/>
+        <number default="2" defaultValue="2" desc="" dropdown="" fullname="WanderWaitTime" hidden="false" id="16" name="_WanderWaitTime" order="16"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="DirectionOfWander" hidden="true" id="17" name="_DirectionOfWander" order="17"/>
+        <number default="10" defaultValue="10" desc="" dropdown="" fullname="EnemieSpeed" hidden="false" id="18" name="_EnemieSpeed" order="18"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="ControlWander" hidden="true" id="19" name="_ControlWander" order="19"/>
+        <boolean default="true" defaultValue="true" desc="" dropdown="" fullname="activateControlWanderOnce" hidden="true" id="20" name="_activateControlWanderOnce" order="20"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="ShootingDirection" hidden="true" id="21" name="_ShootingDirection" order="21"/>
+        <blocks/>
+        <events>
+            <event displayName="RelativePositionToCC5" enabled="true" id="1" name="step" order="1" repeats="true"/>
+            <event displayName="GetStationToFollowEvent" enabled="true" id="3" name="event-custom" order="16" repeats="true"/>
+            <event displayName="SetUpStartValues" enabled="true" id="4" name="init" order="15" repeats="true"/>
+            <event displayName="FiniteStateMachine" enabled="true" id="5" name="step" order="2" repeats="true"/>
+            <event displayName="ShootStationEvent" enabled="true" id="6" name="event-custom" order="14" repeats="true"/>
+            <event displayName="CheckingSceneLimits" enabled="true" id="7" name="step" order="13" repeats="true"/>
+            <event displayName="Wandering" enabled="true" id="8" name="step" order="11" repeats="true"/>
+            <event displayName="WanderEvent" enabled="true" id="9" name="event-custom" order="12" repeats="true"/>
+            <event displayName="DroppedNewStation" enabled="true" id="13" name="event-custom" order="8" repeats="true"/>
+            <event displayName="Choose PowerStation" enabled="true" id="14" name="step" order="19" repeats="true"/>
+            <event displayName="AttackStation" enabled="true" id="15" name="event-periodic" order="17" repeats="true"/>
+            <event displayName="AttackingCC5" enabled="true" id="16" name="event-periodic" order="10" repeats="true"/>
+            <event displayName="ReducingEnemyCountOnStage" enabled="true" id="17" name="event-actor-create-kill" order="18" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_20" classname="scripts.ActorEvents_20" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="11" name="ActorEvents_20" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <actor default="" defaultValue="" desc="" dropdown="" fullname="MySelf" hidden="false" id="1" name="_MySelf" order="0"/>
+        <blocks/>
+        <events>
+            <event displayName="StartValues" enabled="true" id="1" name="init" order="1" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_12_12_SpaningEnemies" classname="scripts.Design_12_12_SpaningEnemies" desc="" description="" design="true" drawOrder="0" id="12" name="LevelGeneralBehavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="scene">
+        <actor default="" defaultValue="" desc="" dropdown="" fullname="EnemieToSpan" hidden="true" id="1" name="_EnemieToSpan" order="0"/>
+        <text default="" defaultValue="" desc="" dropdown="" fullname="LevelName" hidden="false" id="2" name="_LevelName" order="1"/>
+        <number default="25.0" defaultValue="25.0" desc="" dropdown="" fullname="RegionRadius" hidden="false" id="3" name="_RegionRadius" order="2"/>
+        <text default="Game Over !!" defaultValue="Game Over !!" desc="" dropdown="" fullname="GameOverMessege" hidden="false" id="4" name="_GameOverMessege" order="3"/>
+        <number default="3.0" defaultValue="3.0" desc="" dropdown="" fullname="ReloadTime" hidden="false" id="5" name="_ReloadTime" order="4"/>
+        <number default="5" defaultValue="5" desc="" dropdown="" fullname="EnemySpanTime" hidden="false" id="6" name="_EnemySpanTime" order="5"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="MaxNumberOfEnemies" hidden="false" id="7" name="_MaxNumberOfEnemies" order="6"/>
+        <number default="1" defaultValue="1" desc="" dropdown="" fullname="top" hidden="true" id="8" name="_top" order="7"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="down" hidden="true" id="9" name="_down" order="8"/>
+        <number default="2" defaultValue="2" desc="" dropdown="" fullname="left" hidden="true" id="10" name="_left" order="9"/>
+        <number default="3" defaultValue="3" desc="" dropdown="" fullname="right" hidden="true" id="11" name="_right" order="10"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="placeAuxiliar" hidden="true" id="12" name="_placeAuxiliar" order="13"/>
+        <actortype default="" defaultValue="" desc="" dropdown="" fullname="CurrentTypeOfEnemy" hidden="false" id="13" name="_CurrentTypeOfEnemy" order="11"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="XScreenLimit" hidden="false" id="14" name="_XScreenLimit" order="12"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="CoreChargeRequired" hidden="true" id="15" name="_CoreChargeRequired" order="14"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="XStartOfInterface" hidden="false" id="16" name="_XStartOfInterface" order="15"/>
+        <boolean default="true" defaultValue="true" desc="" dropdown="" fullname="DrawingInterface?" hidden="true" id="17" name="_DrawingInterface" order="16"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="WinLevel?" hidden="true" id="18" name="_WinLevel" order="17"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="LastWave" hidden="true" id="19" name="_LastWave" order="18"/>
+        <blocks/>
+        <events>
+            <event displayName="SettigCurrentLevel" enabled="true" id="1" name="init" order="6" repeats="true"/>
+            <event displayName="ReloadGameEvent" enabled="true" id="2" name="event-custom" order="11" repeats="true"/>
+            <event displayName="SettingRegions" enabled="true" id="3" name="init" order="9" repeats="true"/>
+            <event displayName="GameOverAndWinningMessege" enabled="true" id="4" name="draw" order="12" repeats="true"/>
+            <event displayName="SpawnEnemies" enabled="true" id="5" name="event-periodic" order="7" repeats="true"/>
+            <event displayName="FirstWaveOfEnemies" enabled="true" id="6" name="event-custom" order="10" repeats="true"/>
+            <event displayName="DrawingInterface" enabled="true" id="8" name="draw" order="15" repeats="true"/>
+            <event displayName="WinLevelAfterClearMap" enabled="true" id="11" name="step" order="4" repeats="true"/>
+            <event displayName="ResetAttributes" enabled="true" id="12" name="event-custom" order="14" repeats="true"/>
+            <event displayName="ChargeComplete" enabled="true" id="13" name="event-custom" order="3" repeats="true"/>
+            <event displayName="SurrenderLevel" enabled="true" id="14" name="event-key-press-release" order="13" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_13_13_CC5Behavior" classname="scripts.Design_13_13_CC5Behavior" desc="" description="" design="true" drawOrder="0" id="13" name="CC5Behavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="actor">
+        <actor default="thisactor" defaultValue="thisactor" desc="" dropdown="" fullname="Actor" hidden="true" id="2147483647" name="actor" order="0"/>
+        <number default="198.0" defaultValue="198.0" desc="" dropdown="" fullname="XScreenLimit" hidden="false" id="1" name="_XScreenLimit" order="1"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="isInARegion" hidden="true" id="2" name="_isInARegion" order="2"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="loopOver" hidden="true" id="3" name="_loopOver" order="3"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="HasPermitionToDropStation" hidden="true" id="4" name="_HasPermitionToDropStation" order="4"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="XPositionCC5" hidden="true" id="5" name="_XPositionCC5" order="5"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="YPositionCC5" hidden="true" id="6" name="_YPositionCC5" order="6"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="CurrentNumberOfStation" hidden="false" id="7" name="_CurrentNumberOfStation" order="7"/>
+        <number default="5.0" defaultValue="5.0" desc="" dropdown="" fullname="StationLimit" hidden="false" id="8" name="_StationLimit" order="8"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="ShootingForce" hidden="false" id="9" name="_ShootingForce" order="9"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="XofRegionToDropStation" hidden="true" id="10" name="_XofRegionToDropStation" order="10"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="YofRegionToDropStation" hidden="true" id="11" name="_YofRegionToDropStation" order="11"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="RelativeDistanceFromDropingPlace" hidden="false" id="12" name="_RelativeDistanceFromDropingPlace" order="12"/>
+        <number default="17.0" defaultValue="17.0" desc="" dropdown="" fullname="RagionRadius" hidden="false" id="13" name="_RagionRadius" order="13"/>
+        <actortype default="" defaultValue="" desc="" dropdown="" fullname="CurrentBullet" hidden="false" id="14" name="_CurrentBullet" order="14"/>
+        <sound default="" defaultValue="" desc="" dropdown="" fullname="BulletSound" hidden="true" id="15" name="_BulletSound" order="15"/>
+        <blocks/>
+        <events>
+            <event displayName="CheckingLimits" enabled="true" id="1" name="step" order="1" repeats="false"/>
+            <event displayName="CheckingRegionsForDroppingStation" enabled="true" id="2" name="step" order="5" repeats="true"/>
+            <event displayName="PositionUpdate" enabled="true" id="3" name="step" order="7" repeats="true"/>
+            <event displayName="CheckingIfCC5IsAlive" enabled="true" id="4" name="step" order="8" repeats="true"/>
+            <event displayName="CollisionWithBullet" enabled="false" id="5" name="event-collide-actortotype" order="9" repeats="true"/>
+            <event displayName="DroppingPowerStation" enabled="true" id="6" name="event-key-press-release" order="10" repeats="true"/>
+            <event displayName="Shooting" enabled="true" id="7" name="event-key-press-release" order="4" repeats="true"/>
+            <event displayName="SetupInitialAttributes" enabled="true" id="9" name="init" order="3" repeats="true"/>
+            <event displayName="ResetAttributes" enabled="true" id="10" name="event-custom" order="2" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_14_14_PowerStationBehavior" classname="scripts.Design_14_14_PowerStationBehavior" desc="" description="" design="true" drawOrder="0" id="14" name="PowerStationBehavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="actor">
+        <actor default="thisactor" defaultValue="thisactor" desc="" dropdown="" fullname="Actor" hidden="true" id="2147483647" name="actor" order="0"/>
+        <actor default="" defaultValue="" desc="" dropdown="" fullname="Myself" hidden="false" id="1" name="_Myself" order="1"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="StationLifePoints" hidden="false" id="2" name="_StationLifePoints" order="2"/>
+        <blocks/>
+        <events>
+            <event displayName="AddingSelfForListOfStations" enabled="true" id="1" name="init" order="1" repeats="true"/>
+            <event displayName="RemovingSelfFromListOfStations" enabled="true" id="2" name="event-actor-create-kill" order="2" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_23" classname="scripts.ActorEvents_23" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="15" name="ActorEvents_23" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_16_16_CC5BulletBEhavior" classname="scripts.Design_16_16_CC5BulletBEhavior" desc="" description="" design="true" drawOrder="0" id="16" name="CC5BulletBEhavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="actor">
+        <actor default="thisactor" defaultValue="thisactor" desc="" dropdown="" fullname="Actor" hidden="true" id="2147483647" name="actor" order="0"/>
+        <text default="" defaultValue="" desc="" dropdown="" fullname="BulletType" hidden="false" id="1" name="_BulletType" order="1"/>
+        <blocks/>
+        <events>
+            <event displayName="makingActive" enabled="true" id="1" name="init" order="1" repeats="true"/>
+            <event displayName="KillSelfAfterLeaveScene" enabled="true" id="2" name="event-actor-screen" order="2" repeats="true"/>
+            <event displayName="KillSelfWhenHitsStation" enabled="true" id="4" name="event-collide-actortogroup" order="4" repeats="true"/>
+            <event displayName="HitEnemyBullet" enabled="true" id="5" name="event-collide-actortogroup" order="5" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_17_17_EnemyBulletBehavior" classname="scripts.Design_17_17_EnemyBulletBehavior" desc="" description="" design="true" drawOrder="0" id="17" name="EnemyBulletBehavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="actor">
+        <actor default="thisactor" defaultValue="thisactor" desc="" dropdown="" fullname="Actor" hidden="true" id="2147483647" name="actor" order="2147483647"/>
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_19_19_WelcomeScreenBehavior" classname="scripts.Design_19_19_WelcomeScreenBehavior" desc="" description="" design="true" drawOrder="0" id="19" name="WelcomeScreenBehavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="scene">
+        <number default="4.0" defaultValue="4.0" desc="" dropdown="" fullname="DelayMessegeTime" hidden="false" id="1" name="_DelayMessegeTime" order="0"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="CanDraw" hidden="true" id="2" name="_CanDraw" order="1"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="fadeEffect" hidden="true" id="3" name="_fadeEffect" order="2"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="canStart" hidden="true" id="4" name="_canStart" order="3"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="tittleFadeEffect" hidden="true" id="5" name="_tittleFadeEffect" order="4"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="startFadeEffect" hidden="true" id="6" name="_startFadeEffect" order="5"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="fadeInc" hidden="false" id="7" name="_fadeInc" order="6"/>
+        <blocks/>
+        <events>
+            <event displayName="StartScreenDelay" enabled="true" id="1" name="event-delay" order="1" repeats="true"/>
+            <event displayName="Draw" enabled="true" id="2" name="draw" order="3" repeats="true"/>
+            <event displayName="SettingFadeEffect" enabled="true" id="3" name="step" order="5" repeats="true"/>
+            <event displayName="GameStartDelay" enabled="true" id="4" name="event-delay" order="2" repeats="true"/>
+            <event displayName="GameStart" enabled="true" id="5" name="event-key-press-release" order="4" repeats="true"/>
+            <event displayName="SettingLevelsList" enabled="true" id="6" name="init" order="6" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.SceneEvents_2" classname="scripts.SceneEvents_2" desc="Scene Specific Events" description="Scene Specific Events" design="true" drawOrder="0" id="21" name="SceneEvents_2" oid="-1" package="scripts." sceneid="2" scenespecific="true" shared="false" type="scene">
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_32" classname="scripts.ActorEvents_32" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="22" name="ActorEvents_32" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <blocks/>
+        <events>
+            <event displayName="makingActive" enabled="true" id="1" name="init" order="1" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.SceneEvents_3" classname="scripts.SceneEvents_3" desc="Scene Specific Events" description="Scene Specific Events" design="true" drawOrder="0" id="23" name="SceneEvents_3" oid="-1" package="scripts." sceneid="3" scenespecific="true" shared="false" type="scene">
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_36" classname="scripts.ActorEvents_36" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="24" name="ActorEvents_36" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_42" classname="scripts.ActorEvents_42" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="25" name="ActorEvents_42" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <blocks/>
+        <events>
+            <event displayName="MakingActive" enabled="true" id="1" name="init" order="1" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.SceneEvents_4" classname="scripts.SceneEvents_4" desc="Scene Specific Events" description="Scene Specific Events" design="true" drawOrder="0" id="26" name="SceneEvents_4" oid="-1" package="scripts." sceneid="4" scenespecific="true" shared="false" type="scene">
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_44" classname="scripts.ActorEvents_44" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="27" name="ActorEvents_44" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.SceneEvents_5" classname="scripts.SceneEvents_5" desc="Scene Specific Events" description="Scene Specific Events" design="true" drawOrder="0" id="28" name="SceneEvents_5" oid="-1" package="scripts." sceneid="5" scenespecific="true" shared="false" type="scene">
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_46" classname="scripts.ActorEvents_46" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="29" name="ActorEvents_46" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <blocks/>
+        <events>
+            <event displayName="makingActive" enabled="true" id="1" name="init" order="1" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.SceneEvents_6" classname="scripts.SceneEvents_6" desc="Scene Specific Events" description="Scene Specific Events" design="true" drawOrder="0" id="30" name="SceneEvents_6" oid="-1" package="scripts." sceneid="6" scenespecific="true" shared="false" type="scene">
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="Selection" hidden="false" id="1" name="_Selection" order="0"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="iceCode" hidden="true" id="2" name="_iceCode" order="1"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="lavaCode" hidden="true" id="3" name="_lavaCode" order="2"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="swampCode" hidden="true" id="4" name="_swampCode" order="3"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="desertCode" hidden="true" id="5" name="_desertCode" order="4"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="rockCode" hidden="true" id="6" name="_rockCode" order="5"/>
+        <blocks/>
+        <events>
+            <event displayName="SelectorPosition" enabled="false" id="1" name="draw" order="1" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_31_31_LevelSelectionBehavior" classname="scripts.Design_31_31_LevelSelectionBehavior" desc="" description="" design="true" drawOrder="0" id="31" name="LevelSelectionBehavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="scene">
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="levelSelected" hidden="true" id="1" name="_levelSelected" order="0"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="desertCode" hidden="true" id="2" name="_desertCode" order="1"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="iceCode" hidden="true" id="3" name="_iceCode" order="2"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="lavaCode" hidden="true" id="4" name="_lavaCode" order="3"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="rockCode" hidden="true" id="5" name="_rockCode" order="4"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="Selection" hidden="false" id="6" name="_Selection" order="5"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="swampCode" hidden="true" id="7" name="_swampCode" order="6"/>
+        <blocks/>
+        <events>
+            <event displayName="SetupPlanetCodes" enabled="true" id="1" name="init" order="1" repeats="true"/>
+            <event displayName="SelectLevel" enabled="true" id="2" name="event-key-press-release" order="2" repeats="true"/>
+            <event displayName="CloseInfo" enabled="true" id="3" name="event-key-press-release" order="10" repeats="true"/>
+            <event displayName="SelectorPosition" enabled="true" id="4" name="draw" order="4" repeats="true"/>
+            <event displayName="InfoLabel" enabled="true" id="5" name="draw" order="5" repeats="true"/>
+            <event displayName="LeftKey" enabled="true" id="6" name="event-key-press-release" order="6" repeats="true"/>
+            <event displayName="UpKey" enabled="true" id="7" name="event-key-press-release" order="7" repeats="true"/>
+            <event displayName="RightKey" enabled="true" id="8" name="event-key-press-release" order="8" repeats="true"/>
+            <event displayName="DownKey" enabled="true" id="9" name="event-key-press-release" order="9" repeats="true"/>
+            <event displayName="ReturnToTheHub" enabled="true" id="10" name="event-key-press-release" order="3" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_48" classname="scripts.ActorEvents_48" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="32" name="ActorEvents_48" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <blocks/>
+        <events>
+            <event displayName="MakingActive" enabled="true" id="1" name="init" order="1" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.SceneEvents_7" classname="scripts.SceneEvents_7" desc="Scene Specific Events" description="Scene Specific Events" design="true" drawOrder="0" id="33" name="SceneEvents_7" oid="-1" package="scripts." sceneid="7" scenespecific="true" shared="false" type="scene">
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_50" classname="scripts.ActorEvents_50" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="34" name="ActorEvents_50" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_52" classname="scripts.ActorEvents_52" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="35" name="ActorEvents_52" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_54" classname="scripts.ActorEvents_54" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="36" name="ActorEvents_54" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_39_39_EnemiesHealthBehavior" classname="scripts.Design_39_39_EnemiesHealthBehavior" desc="The Health Manager will track the Actor's current health, as well as provide blocks for healing and damaging the Actor.  It can also send messages to other behaviors to allow for a wide range of functionality." description="The Health Manager will track the Actor's current health, as well as provide blocks for healing and damaging the Actor.  It can also send messages to other behaviors to allow for a wide range of functionality." design="true" drawOrder="0" id="38" name="EnemiesHealthBehavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="actor">
+        <actor default="thisactor" defaultValue="thisactor" desc="" dropdown="" fullname="Actor" hidden="true" id="2147483647" name="actor" order="0"/>
+        <number default="8.0" defaultValue="8.0" desc="Amount of health to start with." dropdown="" fullname="Starting Health" hidden="false" id="1" name="_StartingHealth" order="2"/>
+        <number default="8.0" defaultValue="8.0" desc="Maximum amount of health." dropdown="" fullname="Maximum Health" hidden="false" id="2" name="_MaximumHealth" order="3"/>
+        <number default="8.0" defaultValue="8.0" desc="HIDDEN - Tracks the current amount of health." dropdown="" fullname="Current Health" hidden="true" id="3" name="_CurrentHealth" order="1"/>
+        <text default="Healed" defaultValue="Healed" desc="Send this message to all behaviors when the Actor is healed by any amount.  Remove value to prevent a message from being sent." dropdown="" fullname="Healed Message" hidden="false" id="4" name="_HealedMessage" order="9"/>
+        <text default="Damaged" defaultValue="Damaged" desc="Send this message to all behaviors when the Actor is damaged by any amount.  Remove the value to prevent a message from being sent." dropdown="" fullname="Damaged Message" hidden="false" id="5" name="_DamagedMessage" order="10"/>
+        <text default="Kill" defaultValue="Kill" desc="What should we do when the health reaches zero?&lt;br&gt;&#10;1. Kill Actor&lt;br&gt;&#10;2. Do Nothing&lt;br&gt;" dropdown="Kill Actor=Kill&#10;Do Nothing=Nothing" fullname="Zero Health Action" hidden="true" id="7" name="_ZeroHealthAction" order="8"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="Invincible?" hidden="true" id="8" name="_Invincible" order="11"/>
+        <number default="0.5" defaultValue="0.5" desc="How long should the Actor become temporarily invincible after being damaged?" dropdown="" fullname="Delay Between Damage" hidden="false" id="9" name="_DelayBetweenDamage" order="7"/>
+        <boolean default="true" defaultValue="true" desc="" dropdown="" fullname="Can Be Damaged?" hidden="true" id="10" name="_CanBeDamaged" order="12"/>
+        <boolean default="false" defaultValue="false" desc="Check this box if the Actor's health should persist (stay the same) from scene to scene.  " dropdown="" fullname="Persistent Health?" hidden="false" id="11" name="_PersistentHealth" order="4"/>
+        <game-attribute default="" defaultValue="" desc="&lt;b&gt;Note:&lt;/b&gt; This option is only used if the &lt;b&gt;Persistent Health?&lt;/b&gt; box is checked.&#10;&lt;br&gt;&lt;br&gt;&#10;Select a &lt;font color=&quot;WHITE&quot;&gt;Game Attribute&lt;/font&gt; to track the health for this Actor.  Make sure the Attribute starts with a value of 0 (zero).  Do not use the same attribute for more than one Actor." dropdown="" fullname="Health Game Attribute" hidden="true" id="12" name="_HealthGameAttribute" order="6"/>
+        <text default="" defaultValue="" desc="INTERNAL ATTRIBUTE: The name of the game attribute created within the behaviour." dropdown="" fullname="Health Identifier" hidden="true" id="13" name="_HealthIdentifier" order="5"/>
+        <sound default="" defaultValue="" desc="Play this sound when the Actor is damaged." dropdown="" fullname="Damage Sound" hidden="false" id="14" name="_DamageSound" order="13"/>
+        <sound default="" defaultValue="" desc="Play this sound when the Actor is killed." dropdown="" fullname="Death Sound" hidden="false" id="15" name="_DeathSound" order="14"/>
+        <sound default="" defaultValue="" desc="Play this sound when the Actor is healed." dropdown="" fullname="Heal Sound" hidden="false" id="16" name="_HealSound" order="15"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="Spawned?" hidden="true" id="17" name="_Spawned" order="21"/>
+        <number default="0.0" defaultValue="0.0" desc="Horizontal offset of the newly spawned actor from the original Actor." dropdown="" fullname="X Offset" hidden="true" id="18" name="xOffset" order="18"/>
+        <number default="0.0" defaultValue="0.0" desc="Vertical offset of the newly spawned actor from the original Actor." dropdown="" fullname="Y Offset" hidden="true" id="19" name="yOffset" order="19"/>
+        <actor default="" defaultValue="" desc="" dropdown="" fullname="Spawned Actor" hidden="true" id="20" name="_SpawnedActor" order="22"/>
+        <number default="0.0" defaultValue="0.0" desc="How long should the actor stay alive before disappearing?  Leave at 0 to prevent the Actor from being removed." dropdown="" fullname="Lifespan" hidden="true" id="22" name="lifespan" order="20"/>
+        <boolean default="false" defaultValue="false" desc="Should the actor spawn another actor on death? Useful for death effects such as explosions." dropdown="" fullname="Spawn Actor On Death" hidden="true" id="23" name="_SpawnActorOnDeath" order="16"/>
+        <actortype default="" defaultValue="" desc="The actor type to spawn." dropdown="" fullname="Actor Type To Spawn" hidden="true" id="24" name="_ActorTypeToSpawn" order="17"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="Percent Left" hidden="true" id="25" name="_PercentLeft" order="37"/>
+        <text default="" defaultValue="" desc="Actor space (relative to upper left coordinate of Actor), or Screen Space (where 0,0 is upper left of screen)?" dropdown="Actor Space=Actor&#10;Screen Space=Screen" fullname="Drawing Location" hidden="true" id="26" name="_DrawingLocation" order="24"/>
+        <number default="0.0" defaultValue="0.0" desc="Horizontal offset in pixels" dropdown="" fullname="Health Bar X Offset" hidden="false" id="27" name="_HealthBarXOffset" order="28"/>
+        <number default="1.0" defaultValue="1.0" desc="How many pixels should the outline be?  Set to 0 to prevent an outline from drawing." dropdown="" fullname="Health Bar Outline Size" hidden="true" id="28" name="_HealthBarOutlineSize" order="30"/>
+        <number default="-5.0" defaultValue="-5.0" desc="Vertical offset in pixels" dropdown="" fullname="Health Bar Y Offset" hidden="false" id="29" name="_HealthBarYOffset" order="29"/>
+        <number default="32.0" defaultValue="32.0" desc="In pixels" dropdown="" fullname="Health Bar Width" hidden="false" id="30" name="_HealthBarWidth" order="26"/>
+        <number default="3.0" defaultValue="3.0" desc="In pixels" dropdown="" fullname="Health Bar Height" hidden="false" id="31" name="_HealthBarHeight" order="27"/>
+        <text default="Horizontal" defaultValue="Horizontal" desc="Horizontal or Vertical?" dropdown="Horizontal=Horizontal&#10;Vertical=Vertical" fullname="Health Bar Orientation" hidden="true" id="32" name="_HealthBarOrientation" order="25"/>
+        <color default="" defaultValue="" desc="Enter an outline colour that will display around the background of the health bar" dropdown="" fullname="Health Bar Outline Colour" hidden="true" id="39" name="_HealthBarOutlineColour" order="31"/>
+        <color default="0,255,0,255" defaultValue="0,255,0,255" desc="Colour of the health bar when the health is over 75%." dropdown="" fullname="Colour Over 75%" hidden="true" id="41" name="_ColourOver75" order="33"/>
+        <color default="255,255,0,255" defaultValue="255,255,0,255" desc="Colour of the health bar when the health is over 50%." dropdown="" fullname="Colour Over 50%" hidden="true" id="42" name="_ColourOver50" order="34"/>
+        <color default="255,153,0,255" defaultValue="255,153,0,255" desc="Colour of the health bar when the health is over 25%." dropdown="" fullname="Colour Over 25%" hidden="true" id="43" name="_ColourOver25" order="35"/>
+        <color default="255,0,0,255" defaultValue="255,0,0,255" desc="Colour of the health bar when the health is under 25%." dropdown="" fullname="Colour Under 25%" hidden="true" id="44" name="_ColourUnder25" order="36"/>
+        <color default="" defaultValue="" desc="Background colour of the health bar." dropdown="" fullname="Health Bar Background Colour" hidden="true" id="45" name="_HealthBarBackgroundColour" order="32"/>
+        <boolean default="true" defaultValue="true" desc="Whether a health bar should be drawn or not." dropdown="" fullname="Draw Health Bar" hidden="true" id="46" name="_DrawHealthBar" order="23"/>
+        <blocks>
+            <receiver blockID="61" id="1"/>
+            <receiver blockID="62" id="2"/>
+            <receiver blockID="60" id="3"/>
+            <receiver blockID="65" id="4"/>
+            <receiver blockID="64" id="5"/>
+            <receiver blockID="58" id="6"/>
+            <receiver blockID="59" id="7"/>
+            <receiver blockID="63" id="8"/>
+        </blocks>
+        <events>
+            <event displayName="Created" enabled="true" id="1" name="init" order="1" repeats="true"/>
+            <event displayName="Heal" enabled="true" id="5" name="receiver-1-18" order="6" repeats="true"/>
+            <event displayName="Damage" enabled="true" id="6" name="receiver-2-20" order="4" repeats="true"/>
+            <event displayName="FullRestore" enabled="true" id="7" name="receiver-3-19" order="7" repeats="true"/>
+            <event displayName="GetCurrentHealth" enabled="true" id="8" name="receiver-4-15" order="8" repeats="true"/>
+            <event displayName="GetMaxHealth" enabled="true" id="9" name="receiver-5-14" order="9" repeats="true"/>
+            <event displayName="SetInvincibility" enabled="true" id="10" name="receiver-6-17" order="10" repeats="true"/>
+            <event displayName="SetHealth" enabled="true" id="11" name="receiver-7-16" order="11" repeats="true"/>
+            <event displayName="GetInvincibility" enabled="true" id="12" name="receiver-8-13" order="12" repeats="true"/>
+            <event displayName="UpdateGlobalHealth" enabled="true" id="13" name="receive-message" order="13" repeats="true"/>
+            <event displayName="Updated" enabled="true" id="15" name="step" order="2" repeats="true"/>
+            <event displayName="Drawing" enabled="true" id="16" name="draw" order="3" repeats="true"/>
+            <event displayName="Death" enabled="true" id="18" name="event-custom" order="15" repeats="true"/>
+            <event displayName="TakingDamage" enabled="true" id="19" name="event-collide-actortogroup" order="16" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_40_40_PowerStationHealthManagerBehavior" classname="scripts.Design_40_40_PowerStationHealthManagerBehavior" desc="The Health Manager will track the Actor's current health, as well as provide blocks for healing and damaging the Actor.  It can also send messages to other behaviors to allow for a wide range of functionality." description="The Health Manager will track the Actor's current health, as well as provide blocks for healing and damaging the Actor.  It can also send messages to other behaviors to allow for a wide range of functionality." design="true" drawOrder="0" id="39" name="PowerStationHealthManagerBehavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="actor">
+        <actor default="thisactor" defaultValue="thisactor" desc="" dropdown="" fullname="Actor" hidden="true" id="2147483647" name="actor" order="0"/>
+        <number default="20.0" defaultValue="20.0" desc="Amount of health to start with." dropdown="" fullname="Starting Health" hidden="false" id="1" name="_StartingHealth" order="2"/>
+        <number default="20.0" defaultValue="20.0" desc="Maximum amount of health." dropdown="" fullname="Maximum Health" hidden="false" id="2" name="_MaximumHealth" order="3"/>
+        <number default="20.0" defaultValue="20.0" desc="HIDDEN - Tracks the current amount of health." dropdown="" fullname="Current Health" hidden="true" id="3" name="_CurrentHealth" order="1"/>
+        <text default="Healed" defaultValue="Healed" desc="Send this message to all behaviors when the Actor is healed by any amount.  Remove value to prevent a message from being sent." dropdown="" fullname="Healed Message" hidden="false" id="4" name="_HealedMessage" order="9"/>
+        <text default="Damaged" defaultValue="Damaged" desc="Send this message to all behaviors when the Actor is damaged by any amount.  Remove the value to prevent a message from being sent." dropdown="" fullname="Damaged Message" hidden="false" id="5" name="_DamagedMessage" order="10"/>
+        <text default="Kill" defaultValue="Kill" desc="What should we do when the health reaches zero?&lt;br&gt;&#10;1. Kill Actor&lt;br&gt;&#10;2. Do Nothing&lt;br&gt;" dropdown="Kill Actor=Kill&#10;Do Nothing=Nothing" fullname="Zero Health Action" hidden="true" id="7" name="_ZeroHealthAction" order="8"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="Invincible?" hidden="true" id="8" name="_Invincible" order="11"/>
+        <number default="0.5" defaultValue="0.5" desc="How long should the Actor become temporarily invincible after being damaged?" dropdown="" fullname="Delay Between Damage" hidden="false" id="9" name="_DelayBetweenDamage" order="7"/>
+        <boolean default="true" defaultValue="true" desc="" dropdown="" fullname="Can Be Damaged?" hidden="true" id="10" name="_CanBeDamaged" order="12"/>
+        <boolean default="false" defaultValue="false" desc="Check this box if the Actor's health should persist (stay the same) from scene to scene.  " dropdown="" fullname="Persistent Health?" hidden="false" id="11" name="_PersistentHealth" order="4"/>
+        <game-attribute default="" defaultValue="" desc="&lt;b&gt;Note:&lt;/b&gt; This option is only used if the &lt;b&gt;Persistent Health?&lt;/b&gt; box is checked.&#10;&lt;br&gt;&lt;br&gt;&#10;Select a &lt;font color=&quot;WHITE&quot;&gt;Game Attribute&lt;/font&gt; to track the health for this Actor.  Make sure the Attribute starts with a value of 0 (zero).  Do not use the same attribute for more than one Actor." dropdown="" fullname="Health Game Attribute" hidden="true" id="12" name="_HealthGameAttribute" order="6"/>
+        <text default="" defaultValue="" desc="INTERNAL ATTRIBUTE: The name of the game attribute created within the behaviour." dropdown="" fullname="Health Identifier" hidden="true" id="13" name="_HealthIdentifier" order="5"/>
+        <sound default="" defaultValue="" desc="Play this sound when the Actor is damaged." dropdown="" fullname="Damage Sound" hidden="false" id="14" name="_DamageSound" order="13"/>
+        <sound default="" defaultValue="" desc="Play this sound when the Actor is killed." dropdown="" fullname="Death Sound" hidden="false" id="15" name="_DeathSound" order="14"/>
+        <sound default="" defaultValue="" desc="Play this sound when the Actor is healed." dropdown="" fullname="Heal Sound" hidden="false" id="16" name="_HealSound" order="15"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="Spawned?" hidden="true" id="17" name="_Spawned" order="21"/>
+        <number default="0.0" defaultValue="0.0" desc="Horizontal offset of the newly spawned actor from the original Actor." dropdown="" fullname="X Offset" hidden="true" id="18" name="xOffset" order="18"/>
+        <number default="0.0" defaultValue="0.0" desc="Vertical offset of the newly spawned actor from the original Actor." dropdown="" fullname="Y Offset" hidden="true" id="19" name="yOffset" order="19"/>
+        <actor default="" defaultValue="" desc="" dropdown="" fullname="Spawned Actor" hidden="true" id="20" name="_SpawnedActor" order="22"/>
+        <number default="0.0" defaultValue="0.0" desc="How long should the actor stay alive before disappearing?  Leave at 0 to prevent the Actor from being removed." dropdown="" fullname="Lifespan" hidden="true" id="22" name="lifespan" order="20"/>
+        <boolean default="false" defaultValue="false" desc="Should the actor spawn another actor on death? Useful for death effects such as explosions." dropdown="" fullname="Spawn Actor On Death" hidden="true" id="23" name="_SpawnActorOnDeath" order="16"/>
+        <actortype default="" defaultValue="" desc="The actor type to spawn." dropdown="" fullname="Actor Type To Spawn" hidden="true" id="24" name="_ActorTypeToSpawn" order="17"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="Percent Left" hidden="true" id="25" name="_PercentLeft" order="37"/>
+        <text default="" defaultValue="" desc="Actor space (relative to upper left coordinate of Actor), or Screen Space (where 0,0 is upper left of screen)?" dropdown="Actor Space=Actor&#10;Screen Space=Screen" fullname="Drawing Location" hidden="true" id="26" name="_DrawingLocation" order="24"/>
+        <number default="25.0" defaultValue="25.0" desc="Horizontal offset in pixels" dropdown="" fullname="Health Bar X Offset" hidden="false" id="27" name="_HealthBarXOffset" order="28"/>
+        <number default="1.0" defaultValue="1.0" desc="How many pixels should the outline be?  Set to 0 to prevent an outline from drawing." dropdown="" fullname="Health Bar Outline Size" hidden="true" id="28" name="_HealthBarOutlineSize" order="30"/>
+        <number default="80.0" defaultValue="80.0" desc="Vertical offset in pixels" dropdown="" fullname="Health Bar Y Offset" hidden="false" id="29" name="_HealthBarYOffset" order="29"/>
+        <number default="50.0" defaultValue="50.0" desc="In pixels" dropdown="" fullname="Health Bar Width" hidden="false" id="30" name="_HealthBarWidth" order="26"/>
+        <number default="5.0" defaultValue="5.0" desc="In pixels" dropdown="" fullname="Health Bar Height" hidden="false" id="31" name="_HealthBarHeight" order="27"/>
+        <text default="Horizontal" defaultValue="Horizontal" desc="Horizontal or Vertical?" dropdown="Horizontal=Horizontal&#10;Vertical=Vertical" fullname="Health Bar Orientation" hidden="true" id="32" name="_HealthBarOrientation" order="25"/>
+        <color default="" defaultValue="" desc="Enter an outline colour that will display around the background of the health bar" dropdown="" fullname="Health Bar Outline Colour" hidden="true" id="39" name="_HealthBarOutlineColour" order="31"/>
+        <color default="0,255,0,255" defaultValue="0,255,0,255" desc="Colour of the health bar when the health is over 75%." dropdown="" fullname="Colour Over 75%" hidden="true" id="41" name="_ColourOver75" order="33"/>
+        <color default="255,255,0,255" defaultValue="255,255,0,255" desc="Colour of the health bar when the health is over 50%." dropdown="" fullname="Colour Over 50%" hidden="true" id="42" name="_ColourOver50" order="34"/>
+        <color default="255,153,0,255" defaultValue="255,153,0,255" desc="Colour of the health bar when the health is over 25%." dropdown="" fullname="Colour Over 25%" hidden="true" id="43" name="_ColourOver25" order="35"/>
+        <color default="255,0,0,255" defaultValue="255,0,0,255" desc="Colour of the health bar when the health is under 25%." dropdown="" fullname="Colour Under 25%" hidden="true" id="44" name="_ColourUnder25" order="36"/>
+        <color default="" defaultValue="" desc="Background colour of the health bar." dropdown="" fullname="Health Bar Background Colour" hidden="true" id="45" name="_HealthBarBackgroundColour" order="32"/>
+        <boolean default="true" defaultValue="true" desc="Whether a health bar should be drawn or not." dropdown="" fullname="Draw Health Bar" hidden="true" id="46" name="_DrawHealthBar" order="23"/>
+        <blocks>
+            <receiver blockID="69" id="1"/>
+            <receiver blockID="70" id="2"/>
+            <receiver blockID="68" id="3"/>
+            <receiver blockID="73" id="4"/>
+            <receiver blockID="72" id="5"/>
+            <receiver blockID="66" id="6"/>
+            <receiver blockID="67" id="7"/>
+            <receiver blockID="71" id="8"/>
+        </blocks>
+        <events>
+            <event displayName="Created" enabled="true" id="1" name="init" order="1" repeats="true"/>
+            <event displayName="Heal" enabled="true" id="5" name="receiver-1-18" order="6" repeats="true"/>
+            <event displayName="Damage" enabled="true" id="6" name="receiver-2-20" order="4" repeats="true"/>
+            <event displayName="FullRestore" enabled="true" id="7" name="receiver-3-19" order="7" repeats="true"/>
+            <event displayName="GetCurrentHealth" enabled="true" id="8" name="receiver-4-15" order="8" repeats="true"/>
+            <event displayName="GetMaxHealth" enabled="true" id="9" name="receiver-5-14" order="9" repeats="true"/>
+            <event displayName="SetInvincibility" enabled="true" id="10" name="receiver-6-17" order="10" repeats="true"/>
+            <event displayName="SetHealth" enabled="true" id="11" name="receiver-7-16" order="11" repeats="true"/>
+            <event displayName="GetInvincibility" enabled="true" id="12" name="receiver-8-13" order="12" repeats="true"/>
+            <event displayName="UpdateGlobalHealth" enabled="true" id="13" name="receive-message" order="13" repeats="true"/>
+            <event displayName="Updated" enabled="true" id="15" name="step" order="2" repeats="true"/>
+            <event displayName="Drawing" enabled="true" id="16" name="draw" order="3" repeats="true"/>
+            <event displayName="Death" enabled="true" id="18" name="event-custom" order="15" repeats="true"/>
+            <event displayName="TakingDamage" enabled="true" id="19" name="event-collide-actortogroup" order="16" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_41_41_CC5HealthManagerBehavior" classname="scripts.Design_41_41_CC5HealthManagerBehavior" desc="The Health Manager will track the Actor's current health, as well as provide blocks for healing and damaging the Actor.  It can also send messages to other behaviors to allow for a wide range of functionality." description="The Health Manager will track the Actor's current health, as well as provide blocks for healing and damaging the Actor.  It can also send messages to other behaviors to allow for a wide range of functionality." design="true" drawOrder="0" id="40" name="CC5HealthManagerBehavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="actor">
+        <actor default="thisactor" defaultValue="thisactor" desc="" dropdown="" fullname="Actor" hidden="true" id="2147483647" name="actor" order="0"/>
+        <number default="3.0" defaultValue="3.0" desc="Amount of health to start with." dropdown="" fullname="Starting Health" hidden="true" id="1" name="_StartingHealth" order="2"/>
+        <number default="3.0" defaultValue="3.0" desc="Maximum amount of health." dropdown="" fullname="Maximum Health" hidden="true" id="2" name="_MaximumHealth" order="3"/>
+        <number default="3.0" defaultValue="3.0" desc="HIDDEN - Tracks the current amount of health." dropdown="" fullname="Current Health" hidden="true" id="3" name="_CurrentHealth" order="1"/>
+        <text default="Healed" defaultValue="Healed" desc="Send this message to all behaviors when the Actor is healed by any amount.  Remove value to prevent a message from being sent." dropdown="" fullname="Healed Message" hidden="false" id="4" name="_HealedMessage" order="9"/>
+        <text default="Damaged" defaultValue="Damaged" desc="Send this message to all behaviors when the Actor is damaged by any amount.  Remove the value to prevent a message from being sent." dropdown="" fullname="Damaged Message" hidden="false" id="5" name="_DamagedMessage" order="10"/>
+        <text default="Kill" defaultValue="Kill" desc="What should we do when the health reaches zero?&lt;br&gt;&#10;1. Kill Actor&lt;br&gt;&#10;2. Do Nothing&lt;br&gt;" dropdown="Kill Actor=Kill&#10;Do Nothing=Nothing" fullname="Zero Health Action" hidden="true" id="7" name="_ZeroHealthAction" order="8"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="Invincible?" hidden="true" id="8" name="_Invincible" order="11"/>
+        <number default="0.0" defaultValue="0.0" desc="How long should the Actor become temporarily invincible after being damaged?" dropdown="" fullname="Delay Between Damage" hidden="true" id="9" name="_DelayBetweenDamage" order="7"/>
+        <boolean default="true" defaultValue="true" desc="" dropdown="" fullname="Can Be Damaged?" hidden="true" id="10" name="_CanBeDamaged" order="12"/>
+        <boolean default="false" defaultValue="false" desc="Check this box if the Actor's health should persist (stay the same) from scene to scene.  " dropdown="" fullname="Persistent Health?" hidden="true" id="11" name="_PersistentHealth" order="4"/>
+        <game-attribute default="" defaultValue="" desc="&lt;b&gt;Note:&lt;/b&gt; This option is only used if the &lt;b&gt;Persistent Health?&lt;/b&gt; box is checked.&#10;&lt;br&gt;&lt;br&gt;&#10;Select a &lt;font color=&quot;WHITE&quot;&gt;Game Attribute&lt;/font&gt; to track the health for this Actor.  Make sure the Attribute starts with a value of 0 (zero).  Do not use the same attribute for more than one Actor." dropdown="" fullname="Health Game Attribute" hidden="true" id="12" name="_HealthGameAttribute" order="6"/>
+        <text default="" defaultValue="" desc="INTERNAL ATTRIBUTE: The name of the game attribute created within the behaviour." dropdown="" fullname="Health Identifier" hidden="true" id="13" name="_HealthIdentifier" order="5"/>
+        <sound default="" defaultValue="" desc="Play this sound when the Actor is damaged." dropdown="" fullname="Damage Sound" hidden="false" id="14" name="_DamageSound" order="13"/>
+        <sound default="" defaultValue="" desc="Play this sound when the Actor is killed." dropdown="" fullname="Death Sound" hidden="false" id="15" name="_DeathSound" order="14"/>
+        <sound default="" defaultValue="" desc="Play this sound when the Actor is healed." dropdown="" fullname="Heal Sound" hidden="false" id="16" name="_HealSound" order="15"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="Spawned?" hidden="true" id="17" name="_Spawned" order="22"/>
+        <number default="0.0" defaultValue="0.0" desc="Horizontal offset of the newly spawned actor from the original Actor." dropdown="" fullname="X Offset" hidden="true" id="18" name="xOffset" order="18"/>
+        <number default="0.0" defaultValue="0.0" desc="Vertical offset of the newly spawned actor from the original Actor." dropdown="" fullname="Y Offset" hidden="true" id="19" name="yOffset" order="19"/>
+        <actor default="" defaultValue="" desc="" dropdown="" fullname="Spawned Actor" hidden="true" id="20" name="_SpawnedActor" order="23"/>
+        <number default="0.0" defaultValue="0.0" desc="How long should the actor stay alive before disappearing?  Leave at 0 to prevent the Actor from being removed." dropdown="" fullname="Lifespan" hidden="true" id="22" name="lifespan" order="21"/>
+        <boolean default="false" defaultValue="false" desc="Should the actor spawn another actor on death? Useful for death effects such as explosions." dropdown="" fullname="Spawn Actor On Death" hidden="true" id="23" name="_SpawnActorOnDeath" order="16"/>
+        <actortype default="" defaultValue="" desc="The actor type to spawn." dropdown="" fullname="Actor Type To Spawn" hidden="true" id="24" name="_ActorTypeToSpawn" order="17"/>
+        <number default="0.0" defaultValue="0.0" desc="" dropdown="" fullname="Percent Left" hidden="true" id="25" name="_PercentLeft" order="38"/>
+        <text default="Screen" defaultValue="Screen" desc="Actor space (relative to upper left coordinate of Actor), or Screen Space (where 0,0 is upper left of screen)?" dropdown="Actor Space=Actor&#10;Screen Space=Screen" fullname="Drawing Location" hidden="true" id="26" name="_DrawingLocation" order="25"/>
+        <number default="0.0" defaultValue="0.0" desc="Horizontal offset in pixels" dropdown="" fullname="Health Bar X Offset" hidden="false" id="27" name="_HealthBarXOffset" order="29"/>
+        <number default="2.0" defaultValue="2.0" desc="How many pixels should the outline be?  Set to 0 to prevent an outline from drawing." dropdown="" fullname="Health Bar Outline Size" hidden="true" id="28" name="_HealthBarOutlineSize" order="31"/>
+        <number default="0.0" defaultValue="0.0" desc="Vertical offset in pixels" dropdown="" fullname="Health Bar Y Offset" hidden="false" id="29" name="_HealthBarYOffset" order="30"/>
+        <number default="100.0" defaultValue="100.0" desc="In pixels" dropdown="" fullname="Health Bar Width" hidden="false" id="30" name="_HealthBarWidth" order="27"/>
+        <number default="5.0" defaultValue="5.0" desc="In pixels" dropdown="" fullname="Health Bar Height" hidden="false" id="31" name="_HealthBarHeight" order="28"/>
+        <text default="Horizontal" defaultValue="Horizontal" desc="Horizontal or Vertical?" dropdown="Horizontal=Horizontal&#10;Vertical=Vertical" fullname="Health Bar Orientation" hidden="true" id="32" name="_HealthBarOrientation" order="26"/>
+        <color default="128,128,128,255" defaultValue="128,128,128,255" desc="Enter an outline colour that will display around the background of the health bar" dropdown="" fullname="Health Bar Outline Colour" hidden="true" id="39" name="_HealthBarOutlineColour" order="32"/>
+        <color default="0,255,0,255" defaultValue="0,255,0,255" desc="Colour of the health bar when the health is over 75%." dropdown="" fullname="Colour Over 75%" hidden="false" id="41" name="_ColourOver75" order="34"/>
+        <color default="255,255,0,255" defaultValue="255,255,0,255" desc="Colour of the health bar when the health is over 50%." dropdown="" fullname="Colour Over 50%" hidden="false" id="42" name="_ColourOver50" order="35"/>
+        <color default="255,153,0,255" defaultValue="255,153,0,255" desc="Colour of the health bar when the health is over 25%." dropdown="" fullname="Colour Over 25%" hidden="false" id="43" name="_ColourOver25" order="36"/>
+        <color default="255,0,0,255" defaultValue="255,0,0,255" desc="Colour of the health bar when the health is under 25%." dropdown="" fullname="Colour Under 25%" hidden="false" id="44" name="_ColourUnder25" order="37"/>
+        <color default="" defaultValue="" desc="Background colour of the health bar." dropdown="" fullname="Health Bar Background Colour" hidden="true" id="45" name="_HealthBarBackgroundColour" order="33"/>
+        <boolean default="true" defaultValue="true" desc="Whether a health bar should be drawn or not." dropdown="" fullname="Draw Health Bar" hidden="true" id="46" name="_DrawHealthBar" order="24"/>
+        <blocks>
+            <receiver blockID="77" id="1"/>
+            <receiver blockID="78" id="2"/>
+            <receiver blockID="76" id="3"/>
+            <receiver blockID="81" id="4"/>
+            <receiver blockID="80" id="5"/>
+            <receiver blockID="74" id="6"/>
+            <receiver blockID="75" id="7"/>
+            <receiver blockID="79" id="8"/>
+        </blocks>
+        <events>
+            <event displayName="Created" enabled="true" id="1" name="init" order="1" repeats="true"/>
+            <event displayName="Heal" enabled="true" id="5" name="receiver-1-18" order="6" repeats="true"/>
+            <event displayName="Damage" enabled="true" id="6" name="receiver-2-20" order="4" repeats="true"/>
+            <event displayName="FullRestore" enabled="true" id="7" name="receiver-3-19" order="7" repeats="true"/>
+            <event displayName="GetCurrentHealth" enabled="true" id="8" name="receiver-4-15" order="8" repeats="true"/>
+            <event displayName="GetMaxHealth" enabled="true" id="9" name="receiver-5-14" order="9" repeats="true"/>
+            <event displayName="SetInvincibility" enabled="true" id="10" name="receiver-6-17" order="10" repeats="true"/>
+            <event displayName="SetHealth" enabled="true" id="11" name="receiver-7-16" order="11" repeats="true"/>
+            <event displayName="GetInvincibility" enabled="true" id="12" name="receiver-8-13" order="12" repeats="true"/>
+            <event displayName="UpdateGlobalHealth" enabled="true" id="13" name="receive-message" order="13" repeats="true"/>
+            <event displayName="Updated" enabled="true" id="15" name="step" order="2" repeats="true"/>
+            <event displayName="Drawing" enabled="true" id="16" name="draw" order="3" repeats="true"/>
+            <event displayName="Death" enabled="true" id="18" name="event-custom" order="15" repeats="true"/>
+            <event displayName="TakingDamage" enabled="true" id="19" name="event-collide-actortotype" order="16" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_42_42_CoresManager" classname="scripts.Design_42_42_CoresManager" desc="" description="" design="true" drawOrder="0" id="42" name="CoresManager" oid="-1" package="scripts" scenespecific="false" shared="false" type="scene">
+        <number default="2.0" defaultValue="2.0" desc="" dropdown="" fullname="Bar Outline Size" hidden="true" id="1" name="_BarOutlineSize" order="0"/>
+        <number default="20" defaultValue="20" desc="" dropdown="" fullname="Bar X Offset" hidden="false" id="2" name="_BarXOffset" order="1"/>
+        <number default="150" defaultValue="150" desc="" dropdown="" fullname="Bar Y Offset" hidden="false" id="3" name="_BarYOffset" order="2"/>
+        <number default="50" defaultValue="50" desc="" dropdown="" fullname="Bar Width" hidden="false" id="4" name="_BarWidth" order="3"/>
+        <number default="200" defaultValue="200" desc="" dropdown="" fullname="Bar Height" hidden="false" id="5" name="_BarHeight" order="4"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="Percent Left" hidden="true" id="6" name="_PercentLeft" order="5"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="Cores Left" hidden="true" id="7" name="_CoresLeft" order="6"/>
+        <number default="200" defaultValue="200" desc="" dropdown="" fullname="Total Cores" hidden="false" id="8" name="_TotalCores" order="7"/>
+        <blocks/>
+        <events>
+            <event displayName="Drawing" enabled="true" id="1" name="draw" order="1" repeats="true"/>
+            <event displayName="Created" enabled="true" id="2" name="init" order="2" repeats="true"/>
+            <event displayName="Updated" enabled="true" id="3" name="step" order="4" repeats="true"/>
+            <event displayName="Collect" enabled="true" id="4" name="event-periodic" order="3" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_43_43_CC5LabBehavior" classname="scripts.Design_43_43_CC5LabBehavior" desc="" description="" design="true" drawOrder="0" id="43" name="CC5LabBehavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="actor">
+        <actor default="thisactor" defaultValue="thisactor" desc="" dropdown="" fullname="Actor" hidden="true" id="2147483647" name="actor" order="2147483647"/>
+        <blocks/>
+        <events>
+            <event displayName="DesableBehaviors" enabled="true" id="1" name="init" order="1" repeats="true"/>
+            <event displayName="CheckingLimits" enabled="true" id="2" name="step" order="2" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_44_44_CC5PawnShopBehavior" classname="scripts.Design_44_44_CC5PawnShopBehavior" desc="" description="" design="true" drawOrder="0" id="44" name="CC5PawnShopBehavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="actor">
+        <actor default="thisactor" defaultValue="thisactor" desc="" dropdown="" fullname="Actor" hidden="true" id="2147483647" name="actor" order="2147483647"/>
+        <blocks/>
+        <events>
+            <event displayName="DesableBehaviors" enabled="true" id="1" name="init" order="1" repeats="true"/>
+            <event displayName="CheckingLimits" enabled="true" id="2" name="step" order="2" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_45_45_CC5TheHubBehavior" classname="scripts.Design_45_45_CC5TheHubBehavior" desc="" description="" design="true" drawOrder="0" id="45" name="CC5TheHubBehavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="actor">
+        <actor default="thisactor" defaultValue="thisactor" desc="" dropdown="" fullname="Actor" hidden="true" id="2147483647" name="actor" order="2147483647"/>
+        <blocks/>
+        <events>
+            <event displayName="DesableBehaviors" enabled="true" id="1" name="init" order="1" repeats="true"/>
+            <event displayName="CheckingLimits" enabled="true" id="2" name="step" order="2" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_46_46_LaboratoryBehavior" classname="scripts.Design_46_46_LaboratoryBehavior" desc="" description="" design="true" drawOrder="0" id="46" name="LaboratoryBehavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="scene">
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="RelativeDistanceBetweenCC5AndSicentist" hidden="true" id="1" name="_RelativeDistanceBetweenCC5AndSicentist" order="0"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="XofScientist" hidden="true" id="2" name="_XofScientist" order="1"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="YofScientist" hidden="true" id="3" name="_YofScientist" order="2"/>
+        <actor default="" defaultValue="" desc="" dropdown="" fullname="Scientist" hidden="true" id="4" name="_Scientist" order="3"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="TalkingToScientist" hidden="true" id="5" name="_TalkingToScientist" order="4"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="InTheDoor" hidden="true" id="6" name="_InTheDoor" order="5"/>
+        <list default="list" defaultValue="list" desc="" dropdown="" fullname="SequenceOfText" hidden="true" id="7" name="_SequenceOfText" order="6"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="TextCounter" hidden="true" id="8" name="_TextCounter" order="7"/>
+        <blocks/>
+        <events>
+            <event displayName="SettingLevelName" enabled="true" id="1" name="init" order="1" repeats="true"/>
+            <event displayName="RelativeDistanceBetweenCC5AndSicentist" enabled="true" id="2" name="step" order="2" repeats="true"/>
+            <event displayName="LeaveRoom" enabled="true" id="3" name="event-key-press-release" order="3" repeats="true"/>
+            <event displayName="SpeakWithScientist" enabled="true" id="4" name="event-key-press-release" order="4" repeats="true"/>
+            <event displayName="SpeakingWhithDoc" enabled="true" id="5" name="event-key-press-release" order="5" repeats="true"/>
+            <event displayName="DrawingTexts" enabled="true" id="6" name="draw" order="6" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_47_47_TheHubLevelBehavior" classname="scripts.Design_47_47_TheHubLevelBehavior" desc="" description="" design="true" drawOrder="0" id="47" name="TheHubLevelBehavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="scene">
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="inTheLab" hidden="true" id="1" name="_inTheLab" order="0"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="inThePortal" hidden="true" id="2" name="_inThePortal" order="1"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="inTheShop" hidden="true" id="3" name="_inTheShop" order="2"/>
+        <text default="" defaultValue="" desc="" dropdown="" fullname="notificationMessege" hidden="true" id="4" name="_notificationMessege" order="3"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="InthePortal" hidden="true" id="5" name="_InthePortal" order="4"/>
+        <blocks/>
+        <events>
+            <event displayName="SettingLevelName" enabled="true" id="1" name="init" order="1" repeats="true"/>
+            <event displayName="InTheShop" enabled="true" id="2" name="step" order="3" repeats="true"/>
+            <event displayName="InThePortal" enabled="true" id="3" name="step" order="4" repeats="true"/>
+            <event displayName="InTheLab" enabled="true" id="4" name="step" order="5" repeats="true"/>
+            <event displayName="SwitchingScenne" enabled="true" id="5" name="event-key-press-release" order="6" repeats="true"/>
+            <event displayName="DrawingTexts" enabled="true" id="6" name="draw" order="2" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="false" class="scripts.Design_48_48_ThePawnShopBehavior" classname="scripts.Design_48_48_ThePawnShopBehavior" desc="" description="" design="true" drawOrder="0" id="48" name="ThePawnShopBehavior" oid="-1" package="scripts" scenespecific="false" shared="false" type="scene">
+        <actor default="" defaultValue="" desc="" dropdown="" fullname="PawnShopGuy" hidden="true" id="1" name="_PawnShopGuy" order="0"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="RelativeDistanceBetweenCC5AndPawnShopGuy" hidden="true" id="2" name="_RelativeDistanceBetweenCC5AndPawnShopGuy" order="1"/>
+        <list default="list" defaultValue="list" desc="" dropdown="" fullname="SequenceOfText" hidden="true" id="3" name="_SequenceOfText" order="2"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="InTheDoor" hidden="true" id="4" name="_InTheDoor" order="3"/>
+        <boolean default="false" defaultValue="false" desc="" dropdown="" fullname="TalkingToPawnShop" hidden="true" id="5" name="_TalkingToPawnShop" order="4"/>
+        <number default="0" defaultValue="0" desc="" dropdown="" fullname="TextCounter" hidden="true" id="6" name="_TextCounter" order="5"/>
+        <text default="" defaultValue="" desc="" dropdown="" fullname="CurrentLine" hidden="true" id="7" name="_CurrentLine" order="6"/>
+        <blocks/>
+        <events>
+            <event displayName="SettingLevelName" enabled="true" id="1" name="init" order="1" repeats="true"/>
+            <event displayName="RelativeDistance" enabled="true" id="2" name="step" order="2" repeats="true"/>
+            <event displayName="DrawingTexts" enabled="true" id="3" name="draw" order="3" repeats="true"/>
+            <event displayName="LeaveRoom" enabled="true" id="4" name="event-key-press-release" order="4" repeats="true"/>
+            <event displayName="SpeakWithPawnShopGuy" enabled="true" id="5" name="event-key-press-release" order="5" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.SceneEvents_8" classname="scripts.SceneEvents_8" desc="Scene Specific Events" description="Scene Specific Events" design="true" drawOrder="0" id="49" name="SceneEvents_8" oid="-1" package="scripts." sceneid="8" scenespecific="true" shared="false" type="scene">
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.SceneEvents_9" classname="scripts.SceneEvents_9" desc="Scene Specific Events" description="Scene Specific Events" design="true" drawOrder="0" id="50" name="SceneEvents_9" oid="-1" package="scripts." sceneid="9" scenespecific="true" shared="false" type="scene">
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.SceneEvents_10" classname="scripts.SceneEvents_10" desc="Scene Specific Events" description="Scene Specific Events" design="true" drawOrder="0" id="51" name="SceneEvents_10" oid="-1" package="scripts." sceneid="10" scenespecific="true" shared="false" type="scene">
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_96" classname="scripts.ActorEvents_96" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="52" name="ActorEvents_96" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <blocks/>
+        <events/>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.ActorEvents_98" classname="scripts.ActorEvents_98" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="53" name="ActorEvents_98" oid="-1" package="scripts." scenespecific="false" shared="false" type="actor">
+        <blocks/>
+        <events/>
+    </snippet>
+</pack>

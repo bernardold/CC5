@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<groups>
+    <group eventID="1" id="0">
+        <event-delay comment="false" x="15" y="15">
+            <group eventID="1" id="-1">
+                <set-val-19-2 comment="false" x="26" y="42">
+                    <true comment="false" id="0" x="0" y="0"/>
+                </set-val-19-2>
+            </group>
+            <int id="0" val="4"/>
+            <ACTOR eid="lastcreated" id="2"/>
+        </event-delay>
+    </group>
+    <group eventID="1" id="-1"/>
+    <group eventID="2" id="0">
+        <draw comment="false" x="16" y="19">
+            <group eventID="2" id="-1">
+                <if comment="false" x="27" y="44">
+                    <group eventID="2" id="-1">
+                        <set-font-new comment="false" x="38" y="69">
+                            <font eid="30" id="0"/>
+                        </set-font-new>
+                        <set-alpha comment="false" x="38" y="96">
+                            <get-val-19-5 comment="false" id="0" x="0" y="0"/>
+                        </set-alpha>
+                        <draw-text comment="false" x="38" y="121">
+                            <int id="0" val="CC-5"/>
+                            <int id="1" val="40"/>
+                            <int id="2" val="80"/>
+                        </draw-text>
+                    </group>
+                    <get-val-19-2 comment="false" id="0" x="0" y="0"/>
+                </if>
+                <set-font-new comment="false" x="27" y="153">
+                    <font eid="34" id="0"/>
+                </set-font-new>
+                <set-alpha comment="false" x="27" y="180">
+                    <int id="0" val="100"/>
+                </set-alpha>
+                <draw-text comment="false" x="27" y="200">
+                    <int id="0" val="Produced by 5Gs IN 2D"/>
+                    <int id="1" val="40"/>
+                    <minus comment="false" id="2" x="0" y="0">
+                        <screen-wh comment="false" id="0" x="0" y="0">
+                            <int id="0" val="1"/>
+                        </screen-wh>
+                        <int id="1" val="30"/>
+                    </minus>
+                </draw-text>
+                <if comment="false" x="27" y="238">
+                    <group eventID="2" id="-1">
+                        <set-font-new comment="false" x="38" y="263">
+                            <font eid="35" id="0"/>
+                        </set-font-new>
+                        <set-alpha comment="false" x="38" y="290">
+                            <get-val-19-6 comment="false" id="0" x="0" y="0"/>
+                        </set-alpha>
+                        <draw-text comment="false" x="38" y="315">
+                            <int id="0" val="Press &amp;lt;space&amp;gt; to start a new game"/>
+                            <minus comment="false" id="1" x="0" y="0">
+                                <div comment="false" id="0" x="0" y="0">
+                                    <screen-wh comment="false" id="0" x="0" y="0">
+                                        <int id="0" val="0"/>
+                                    </screen-wh>
+                                    <int id="1" val="2"/>
+                                </div>
+                                <div comment="false" id="1" x="0" y="0">
+                                    <get-font-width2-new comment="false" id="0" x="0" y="0">
+                                        <font eid="35" id="0"/>
+                                        <int id="1" val="Press &amp;lt;space&amp;gt; to start a new game"/>
+                                    </get-font-width2-new>
+                                    <int id="1" val="2"/>
+                                </div>
+                            </minus>
+                            <minus comment="false" id="2" x="0" y="0">
+                                <screen-wh comment="false" id="0" x="0" y="0">
+                                    <int id="0" val="1"/>
+                                </screen-wh>
+                                <int id="1" val="200"/>
+                            </minus>
+                        </draw-text>
+                    </group>
+                    <get-val-19-4 comment="false" id="0" x="0" y="0"/>
+                </if>
+            </group>
+        </draw>
+    </group>
+    <group eventID="2" id="-1"/>
+    <group eventID="3" id="0">
+        <step comment="false" x="15" y="15">
+            <group eventID="3" id="-1">
+                <if comment="false" x="26" y="40">
+                    <group eventID="3" id="-1">
+                        <if comment="false" x="37" y="65">
+                            <group eventID="3" id="-1">
+                                <set-val-19-5 comment="false" x="48" y="95">
+                                    <plus comment="false" id="0" x="0" y="0">
+                                        <get-val-19-5 comment="false" id="0" x="0" y="0"/>
+                                        <int id="1" val="0.1"/>
+                                    </plus>
+                                </set-val-19-5>
+                            </group>
+                            <less comment="false" id="0" x="0" y="0">
+                                <get-val-19-5 comment="false" id="0" x="0" y="0"/>
+                                <int id="1" val="100"/>
+                            </less>
+                        </if>
+                    </group>
+                    <get-val-19-2 comment="false" id="0" x="0" y="0"/>
+                </if>
+                <if comment="false" x="26" y="149">
+                    <group eventID="3" id="-1">
+                        <set-val-19-6 comment="false" x="37" y="174">
+                            <plus comment="false" id="0" x="0" y="0">
+                                <get-val-19-6 comment="false" id="0" x="0" y="0"/>
+                                <get-val-19-7 comment="false" id="1" x="0" y="0"/>
+                            </plus>
+                        </set-val-19-6>
+                        <if comment="false" x="37" y="204">
+                            <group eventID="3" id="-1">
+                                <set-val-19-7 comment="false" x="48" y="239">
+                                    <times comment="false" id="0" x="0" y="0">
+                                        <get-val-19-7 comment="false" id="0" x="0" y="0"/>
+                                        <int id="1" val="-1"/>
+                                    </times>
+                                </set-val-19-7>
+                            </group>
+                            <or comment="false" id="0" x="0" y="0">
+                                <lesseq comment="false" id="0" x="0" y="0">
+                                    <get-val-19-6 comment="false" id="0" x="0" y="0"/>
+                                    <int id="1" val="20"/>
+                                </lesseq>
+                                <moreeq comment="false" id="1" x="0" y="0">
+                                    <get-val-19-6 comment="false" id="0" x="0" y="0"/>
+                                    <int id="1" val="100"/>
+                                </moreeq>
+                            </or>
+                        </if>
+                    </group>
+                    <get-val-19-4 comment="false" id="0" x="0" y="0"/>
+                </if>
+            </group>
+        </step>
+    </group>
+    <group eventID="3" id="-1"/>
+    <group eventID="4" id="0">
+        <event-delay comment="false" x="15" y="15">
+            <group eventID="4" id="-1">
+                <set-val-19-4 comment="false" x="26" y="42">
+                    <true comment="false" id="0" x="0" y="0"/>
+                </set-val-19-4>
+            </group>
+            <int id="0" val="8"/>
+            <ACTOR eid="lastcreated" id="2"/>
+        </event-delay>
+    </group>
+    <group eventID="4" id="-1"/>
+    <group eventID="5" id="0">
+        <event-key-press-release comment="false" x="15" y="15">
+            <group eventID="5" id="-1">
+                <if comment="false" x="26" y="42">
+                    <group eventID="5" id="-1">
+                        <scene-change-through comment="false" x="37" y="67">
+                            <scene eid="8" id="0"/>
+                            <int id="1" val="0"/>
+                            <int id="2" val=".5"/>
+                        </scene-change-through>
+                    </group>
+                    <get-val-19-4 comment="false" id="0" x="0" y="0"/>
+                </if>
+            </group>
+            <control eid="5" id="0"/>
+            <int id="1" val="0"/>
+        </event-key-press-release>
+    </group>
+    <group eventID="5" id="-1"/>
+    <group eventID="6" id="0">
+        <init comment="false" x="15" y="15">
+            <group eventID="6" id="-1">
+                <stop-sounds comment="false" x="26" y="40"/>
+                <play-sound4 comment="false" x="26" y="60">
+                    <int id="0" val="0"/>
+                    <sound eid="106" id="1"/>
+                </play-sound4>
+                <set-val-19-7 comment="false" x="26" y="87">
+                    <int id="0" val="0.5"/>
+                </set-val-19-7>
+                <set-val-19-6 comment="false" x="26" y="107">
+                    <int id="0" val="50"/>
+                </set-val-19-6>
+                <add-list comment="false" x="26" y="127">
+                    <get-game-val-12 comment="false" id="0" x="0" y="0"/>
+                    <int id="1" val="Ice"/>
+                </add-list>
+                <add-list comment="false" x="26" y="152">
+                    <get-game-val-12 comment="false" id="0" x="0" y="0"/>
+                    <int id="1" val="Lava"/>
+                </add-list>
+                <add-list comment="false" x="26" y="177">
+                    <get-game-val-12 comment="false" id="0" x="0" y="0"/>
+                    <int id="1" val="Swamp"/>
+                </add-list>
+                <add-list comment="false" x="26" y="202">
+                    <get-game-val-12 comment="false" id="0" x="0" y="0"/>
+                    <int id="1" val="Desert"/>
+                </add-list>
+                <add-list comment="false" x="26" y="227">
+                    <get-game-val-12 comment="false" id="0" x="0" y="0"/>
+                    <int id="1" val="Rock"/>
+                </add-list>
+            </group>
+        </init>
+    </group>
+    <group eventID="6" id="-1"/>
+</groups>

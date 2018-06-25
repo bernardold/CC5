@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<groups>
+    <group eventID="1" id="0">
+        <draw comment="false" x="15" y="15">
+            <group eventID="1" id="-1">
+                <to-screen-space comment="false" x="26" y="40"/>
+                <if comment="false" x="26" y="60">
+                    <group eventID="1" id="-1">
+                        <set-color comment="false" x="37" y="90">
+                            <color b="102" g="102" id="0" r="102"/>
+                        </set-color>
+                        <drawfill-rect comment="false" x="37" y="117">
+                            <int id="0" val="1"/>
+                            <minus comment="false" id="1" x="0" y="0">
+                                <get-val-42-2 comment="false" id="0" x="0" y="0"/>
+                                <get-val-42-1 comment="false" id="1" x="0" y="0"/>
+                            </minus>
+                            <minus comment="false" id="2" x="0" y="0">
+                                <get-val-42-3 comment="false" id="0" x="0" y="0"/>
+                                <get-val-42-1 comment="false" id="1" x="0" y="0"/>
+                            </minus>
+                            <plus comment="false" id="3" x="0" y="0">
+                                <get-val-42-4 comment="false" id="0" x="0" y="0"/>
+                                <times comment="false" id="1" x="0" y="0">
+                                    <get-val-42-1 comment="false" id="0" x="0" y="0"/>
+                                    <int id="1" val="2"/>
+                                </times>
+                            </plus>
+                            <plus comment="false" id="4" x="0" y="0">
+                                <get-val-42-5 comment="false" id="0" x="0" y="0"/>
+                                <times comment="false" id="1" x="0" y="0">
+                                    <get-val-42-1 comment="false" id="0" x="0" y="0"/>
+                                    <int id="1" val="2"/>
+                                </times>
+                            </plus>
+                        </drawfill-rect>
+                    </group>
+                    <more comment="false" id="0" x="0" y="0">
+                        <get-val-42-1 comment="false" id="0" x="0" y="0"/>
+                        <int id="1" val="0"/>
+                    </more>
+                </if>
+                <set-color comment="false" x="26" y="171">
+                    <color b="0" g="0" id="0" r="0"/>
+                </set-color>
+                <drawfill-rect comment="false" x="26" y="198">
+                    <int id="0" val="1"/>
+                    <get-val-42-2 comment="false" id="1" x="0" y="0"/>
+                    <get-val-42-3 comment="false" id="2" x="0" y="0"/>
+                    <get-val-42-4 comment="false" id="3" x="0" y="0"/>
+                    <get-val-42-5 comment="false" id="4" x="0" y="0"/>
+                </drawfill-rect>
+                <set-color comment="false" x="26" y="230">
+                    <color b="153" g="51" id="0" r="0"/>
+                </set-color>
+                <drawfill-rect comment="false" x="26" y="257">
+                    <int id="0" val="1"/>
+                    <plus comment="false" id="1" x="0" y="0">
+                        <get-val-42-2 comment="false" id="0" x="0" y="0"/>
+                        <int id="1" val="1"/>
+                    </plus>
+                    <plus comment="false" id="2" x="0" y="0">
+                        <plus comment="false" id="0" x="0" y="0">
+                            <get-val-42-3 comment="false" id="0" x="0" y="0"/>
+                            <roundnew comment="false" id="1" x="0" y="0">
+                                <int id="0" val="0"/>
+                                <times comment="false" id="1" x="0" y="0">
+                                    <get-val-42-5 comment="false" id="0" x="0" y="0"/>
+                                    <minus comment="false" id="1" x="0" y="0">
+                                        <int id="0" val="1"/>
+                                        <get-val-42-6 comment="false" id="1" x="0" y="0"/>
+                                    </minus>
+                                </times>
+                            </roundnew>
+                        </plus>
+                        <int id="1" val="1"/>
+                    </plus>
+                    <minus comment="false" id="3" x="0" y="0">
+                        <get-val-42-4 comment="false" id="0" x="0" y="0"/>
+                        <int id="1" val="2"/>
+                    </minus>
+                    <minus comment="false" id="4" x="0" y="0">
+                        <roundnew comment="false" id="0" x="0" y="0">
+                            <int id="0" val="0"/>
+                            <times comment="false" id="1" x="0" y="0">
+                                <get-val-42-5 comment="false" id="0" x="0" y="0"/>
+                                <get-val-42-6 comment="false" id="1" x="0" y="0"/>
+                            </times>
+                        </roundnew>
+                        <int id="1" val="2"/>
+                    </minus>
+                </drawfill-rect>
+                <set-font-new comment="false" x="26" y="322">
+                    <font eid="82" id="0"/>
+                </set-font-new>
+                <draw-text comment="false" x="26" y="349">
+                    <int id="0" val="Cores:"/>
+                    <int id="1" val="20"/>
+                    <minus comment="false" id="2" x="0" y="0">
+                        <get-val-42-3 comment="false" id="0" x="0" y="0"/>
+                        <int id="1" val="40"/>
+                    </minus>
+                </draw-text>
+                <set-font-new comment="false" x="26" y="379">
+                    <font eid="92" id="0"/>
+                </set-font-new>
+                <draw-text comment="false" x="26" y="406">
+                    <int id="0" val="0"/>
+                    <plus comment="false" id="1" x="0" y="0">
+                        <plus comment="false" id="0" x="0" y="0">
+                            <get-val-42-2 comment="false" id="0" x="0" y="0"/>
+                            <get-val-42-4 comment="false" id="1" x="0" y="0"/>
+                        </plus>
+                        <int id="1" val="5"/>
+                    </plus>
+                    <minus comment="false" id="2" x="0" y="0">
+                        <get-val-42-3 comment="false" id="0" x="0" y="0"/>
+                        <div comment="false" id="1" x="0" y="0">
+                            <get-font-height comment="false" id="0" x="0" y="0"/>
+                            <int id="1" val="2"/>
+                        </div>
+                    </minus>
+                </draw-text>
+                <draw-text comment="false" x="26" y="441">
+                    <get-val-42-8 comment="false" id="0" x="0" y="0"/>
+                    <plus comment="false" id="1" x="0" y="0">
+                        <plus comment="false" id="0" x="0" y="0">
+                            <get-val-42-2 comment="false" id="0" x="0" y="0"/>
+                            <get-val-42-4 comment="false" id="1" x="0" y="0"/>
+                        </plus>
+                        <int id="1" val="5"/>
+                    </plus>
+                    <minus comment="false" id="2" x="0" y="0">
+                        <plus comment="false" id="0" x="0" y="0">
+                            <get-val-42-3 comment="false" id="0" x="0" y="0"/>
+                            <get-val-42-5 comment="false" id="1" x="0" y="0"/>
+                        </plus>
+                        <div comment="false" id="1" x="0" y="0">
+                            <get-font-height comment="false" id="0" x="0" y="0"/>
+                            <int id="1" val="2"/>
+                        </div>
+                    </minus>
+                </draw-text>
+            </group>
+        </draw>
+    </group>
+    <group eventID="1" id="-1"/>
+    <group eventID="2" id="0">
+        <init comment="false" x="15" y="15">
+            <group eventID="2" id="-1">
+                <set-val-42-7 comment="false" x="26" y="40">
+                    <get-val-42-8 comment="false" id="0" x="0" y="0"/>
+                </set-val-42-7>
+            </group>
+        </init>
+    </group>
+    <group eventID="2" id="-1"/>
+    <group eventID="3" id="0">
+        <step comment="false" x="15" y="15">
+            <group eventID="3" id="-1">
+                <set-val-42-6 comment="false" x="26" y="40">
+                    <div comment="false" id="0" x="0" y="0">
+                        <get-val-42-7 comment="false" id="0" x="0" y="0"/>
+                        <get-val-42-8 comment="false" id="1" x="0" y="0"/>
+                    </div>
+                </set-val-42-6>
+                <if comment="false" x="26" y="70">
+                    <group eventID="3" id="-1">
+                        <if comment="false" x="37" y="95">
+                            <group eventID="3" id="-1">
+                                <set-game-val-0 comment="false" x="48" y="125">
+                                    <false comment="false" id="0" x="0" y="0"/>
+                                </set-game-val-0>
+                                <scene-shout comment="false" x="48" y="150">
+                                    <int id="0" val="LastWave"/>
+                                </scene-shout>
+                            </group>
+                            <lesseq comment="false" id="0" x="0" y="0">
+                                <get-val-42-7 comment="false" id="0" x="0" y="0"/>
+                                <int id="1" val="0"/>
+                            </lesseq>
+                        </if>
+                    </group>
+                    <get-game-val-10 comment="false" id="0" x="0" y="0"/>
+                </if>
+            </group>
+        </step>
+    </group>
+    <group eventID="3" id="-1"/>
+    <group eventID="4" id="0">
+        <event-periodic comment="false" x="15" y="15">
+            <group eventID="4" id="-1">
+                <if comment="false" x="26" y="42">
+                    <group eventID="4" id="-1">
+                        <if comment="false" x="37" y="67">
+                            <group eventID="4" id="-1">
+                                <if comment="false" x="48" y="92">
+                                    <group eventID="4" id="-1">
+                                        <set-val-42-7 comment="false" x="59" y="122">
+                                            <minus comment="false" id="0" x="0" y="0">
+                                                <get-val-42-7 comment="false" id="0" x="0" y="0"/>
+                                                <length-list comment="false" id="1" x="0" y="0">
+                                                    <get-game-val-3 comment="false" id="0" x="0" y="0"/>
+                                                </length-list>
+                                            </minus>
+                                        </set-val-42-7>
+                                    </group>
+                                    <more comment="false" id="0" x="0" y="0">
+                                        <get-val-42-6 comment="false" id="0" x="0" y="0"/>
+                                        <int id="1" val="0.0"/>
+                                    </more>
+                                </if>
+                            </group>
+                            <get-game-val-0 comment="false" id="0" x="0" y="0"/>
+                        </if>
+                    </group>
+                    <get-game-val-10 comment="false" id="0" x="0" y="0"/>
+                </if>
+            </group>
+            <int id="0" val="1"/>
+            <ACTOR eid="lastcreated" id="2"/>
+        </event-periodic>
+    </group>
+    <group eventID="4" id="-1"/>
+</groups>

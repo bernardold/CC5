@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<groups>
+    <group eventID="1" id="0">
+        <draw comment="false" x="15" y="15">
+            <group eventID="4" id="-1"/>
+        </draw>
+    </group>
+    <group eventID="1" id="1">
+        <comment-long comment="false" x="295" y="101">
+            <int id="0" val="Position: planet range (CC-5 position)&#10;&#10;Ice: &#9;780, 360 -&amp;gt; 860, 440 (804, 384)&#10;Lava: &#9;110, 200 -&amp;gt; 245, 335 (161, 251)&#10;Swamp:&#9;405, 470 -&amp;gt; 590, 655 (481, 543)&#10;Desert:&#9;975, 90 -&amp;gt; 1155, 270 (1049, 164)&#10;Rock:&#9;580, 040 -&amp;gt; 715, 175 (631, 91)"/>
+        </comment-long>
+        <if comment="false" x="295" y="181">
+            <group eventID="1" id="-1">
+                <set-xy comment="false" x="306" y="211">
+                    <ACTOR eid="1" id="0"/>
+                    <int id="1" val="0"/>
+                    <int id="2" val="804"/>
+                </set-xy>
+                <set-xy comment="false" x="306" y="238">
+                    <ACTOR eid="1" id="0"/>
+                    <int id="1" val="1"/>
+                    <int id="2" val="384"/>
+                </set-xy>
+            </group>
+            <eq comment="false" id="0" x="0" y="0">
+                <get-val-30-1 comment="false" id="0" x="0" y="0"/>
+                <get-val-30-2 comment="false" id="1" x="0" y="0"/>
+            </eq>
+        </if>
+        <else-if comment="false" x="295" y="277">
+            <group eventID="1" id="-1">
+                <set-xy comment="false" x="306" y="307">
+                    <ACTOR eid="1" id="0"/>
+                    <int id="1" val="0"/>
+                    <int id="2" val="161"/>
+                </set-xy>
+                <set-xy comment="false" x="306" y="334">
+                    <ACTOR eid="1" id="0"/>
+                    <int id="1" val="1"/>
+                    <int id="2" val="251"/>
+                </set-xy>
+            </group>
+            <eq comment="false" id="0" x="0" y="0">
+                <get-val-30-1 comment="false" id="0" x="0" y="0"/>
+                <get-val-30-3 comment="false" id="1" x="0" y="0"/>
+            </eq>
+        </else-if>
+        <else-if comment="false" x="295" y="373">
+            <group eventID="1" id="-1">
+                <set-xy comment="false" x="306" y="403">
+                    <ACTOR eid="1" id="0"/>
+                    <int id="1" val="0"/>
+                    <int id="2" val="481"/>
+                </set-xy>
+                <set-xy comment="false" x="306" y="430">
+                    <ACTOR eid="1" id="0"/>
+                    <int id="1" val="1"/>
+                    <int id="2" val="543"/>
+                </set-xy>
+            </group>
+            <eq comment="false" id="0" x="0" y="0">
+                <get-val-30-1 comment="false" id="0" x="0" y="0"/>
+                <get-val-30-4 comment="false" id="1" x="0" y="0"/>
+            </eq>
+        </else-if>
+        <else-if comment="false" x="295" y="469">
+            <group eventID="1" id="-1">
+                <set-xy comment="false" x="306" y="499">
+                    <ACTOR eid="1" id="0"/>
+                    <int id="1" val="0"/>
+                    <int id="2" val="1049"/>
+                </set-xy>
+                <set-xy comment="false" x="306" y="526">
+                    <ACTOR eid="1" id="0"/>
+                    <int id="1" val="1"/>
+                    <int id="2" val="164"/>
+                </set-xy>
+            </group>
+            <eq comment="false" id="0" x="0" y="0">
+                <get-val-30-1 comment="false" id="0" x="0" y="0"/>
+                <get-val-30-5 comment="false" id="1" x="0" y="0"/>
+            </eq>
+        </else-if>
+        <else-if comment="false" x="295" y="565">
+            <group eventID="1" id="-1">
+                <set-xy comment="false" x="306" y="595">
+                    <ACTOR eid="1" id="0"/>
+                    <int id="1" val="0"/>
+                    <int id="2" val="631"/>
+                </set-xy>
+                <set-xy comment="false" x="306" y="622">
+                    <ACTOR eid="1" id="0"/>
+                    <int id="1" val="1"/>
+                    <int id="2" val="91"/>
+                </set-xy>
+            </group>
+            <eq comment="false" id="0" x="0" y="0">
+                <get-val-30-1 comment="false" id="0" x="0" y="0"/>
+                <get-val-30-6 comment="false" id="1" x="0" y="0"/>
+            </eq>
+        </else-if>
+    </group>
+    <group eventID="1" id="-1"/>
+</groups>

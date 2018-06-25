@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<groups>
+    <group eventID="1" id="0">
+        <init comment="false" x="15" y="15">
+            <group eventID="1" id="-1">
+                <stop-sounds comment="false" x="26" y="40"/>
+                <play-sound4 comment="false" x="26" y="60">
+                    <int id="0" val="0"/>
+                    <sound eid="111" id="1"/>
+                </play-sound4>
+                <set-val-48-3 comment="false" x="26" y="87">
+                    <create-list comment="false" id="0" x="0" y="0"/>
+                </set-val-48-3>
+                <set-game-val-8 comment="false" x="26" y="112">
+                    <int id="0" val="PawnShop"/>
+                </set-game-val-8>
+                <create-actor3 comment="false" x="26" y="132">
+                    <actortype eid="96" id="0"/>
+                    <int id="1" val="832"/>
+                    <int id="2" val="224"/>
+                    <int id="3" val="0"/>
+                </create-actor3>
+                <set-val-48-1 comment="false" x="26" y="159">
+                    <ACTOR eid="lastcreated" id="0"/>
+                </set-val-48-1>
+                <add-list comment="false" x="26" y="186">
+                    <get-val-48-3 comment="false" id="0" x="0" y="0"/>
+                    <int id="1" val="Jimbo: Welcome to my store, I’ll be more than happy to take your money!"/>
+                </add-list>
+                <add-list comment="false" x="26" y="211">
+                    <get-val-48-3 comment="false" id="0" x="0" y="0"/>
+                    <int id="1" val="Jimbo: What’s good killa? What can I get for you today?"/>
+                </add-list>
+                <add-list comment="false" x="26" y="236">
+                    <get-val-48-3 comment="false" id="0" x="0" y="0"/>
+                    <int id="1" val="Jimbo: Hey you’re still alive! I like you; you’re great for business."/>
+                </add-list>
+                <add-list comment="false" x="26" y="261">
+                    <get-val-48-3 comment="false" id="0" x="0" y="0"/>
+                    <int id="1" val="Jimbo: My guns are the best in the universe!!! My bullets are ok."/>
+                </add-list>
+                <add-list comment="false" x="26" y="286">
+                    <get-val-48-3 comment="false" id="0" x="0" y="0"/>
+                    <int id="1" val="Jimbo: Welcome! What can I do for you?"/>
+                </add-list>
+                <add-list comment="false" x="26" y="311">
+                    <get-val-48-3 comment="false" id="0" x="0" y="0"/>
+                    <int id="1" val="Jimbo: I’ve got the best prices in space! And by space I mean this space behind the counter…"/>
+                </add-list>
+            </group>
+        </init>
+    </group>
+    <group eventID="1" id="-1"/>
+    <group eventID="2" id="0">
+        <step comment="false" x="15" y="15">
+            <group eventID="2" id="-1">
+                <set-val-48-2 comment="false" x="26" y="40">
+                    <sqrt comment="false" id="0" x="0" y="0">
+                        <plus comment="false" id="0" x="0" y="0">
+                            <pow comment="false" id="0" x="0" y="0">
+                                <minus comment="false" id="0" x="0" y="0">
+                                    <get-game-val-1 comment="false" id="0" x="0" y="0"/>
+                                    <get-xy comment="false" id="1" x="0" y="0">
+                                        <get-val-48-1 comment="false" id="0" x="0" y="0"/>
+                                        <int id="1" val="0"/>
+                                    </get-xy>
+                                </minus>
+                                <int id="1" val="2"/>
+                            </pow>
+                            <pow comment="false" id="1" x="0" y="0">
+                                <minus comment="false" id="0" x="0" y="0">
+                                    <get-game-val-2 comment="false" id="0" x="0" y="0"/>
+                                    <get-xy comment="false" id="1" x="0" y="0">
+                                        <get-val-48-1 comment="false" id="0" x="0" y="0"/>
+                                        <int id="1" val="1"/>
+                                    </get-xy>
+                                </minus>
+                                <int id="1" val="2"/>
+                            </pow>
+                        </plus>
+                    </sqrt>
+                </set-val-48-2>
+                <if comment="false" x="26" y="98">
+                    <group eventID="2" id="-1">
+                        <set-val-48-4 comment="false" x="37" y="138">
+                            <true comment="false" id="0" x="0" y="0"/>
+                        </set-val-48-4>
+                    </group>
+                    <and comment="false" id="0" x="0" y="0">
+                        <and comment="false" id="0" x="0" y="0">
+                            <more comment="false" id="0" x="0" y="0">
+                                <get-game-val-1 comment="false" id="0" x="0" y="0"/>
+                                <int id="1" val="450"/>
+                            </more>
+                            <less comment="false" id="1" x="0" y="0">
+                                <get-game-val-1 comment="false" id="0" x="0" y="0"/>
+                                <int id="1" val="815"/>
+                            </less>
+                        </and>
+                        <and comment="false" id="1" x="0" y="0">
+                            <more comment="false" id="0" x="0" y="0">
+                                <get-game-val-2 comment="false" id="0" x="0" y="0"/>
+                                <int id="1" val="500"/>
+                            </more>
+                            <less comment="false" id="1" x="0" y="0">
+                                <get-game-val-2 comment="false" id="0" x="0" y="0"/>
+                                <int id="1" val="590"/>
+                            </less>
+                        </and>
+                    </and>
+                </if>
+                <else comment="false" x="26" y="175">
+                    <group eventID="2" id="-1">
+                        <set-val-48-4 comment="false" x="37" y="195">
+                            <false comment="false" id="0" x="0" y="0"/>
+                        </set-val-48-4>
+                    </group>
+                </else>
+            </group>
+        </step>
+    </group>
+    <group eventID="2" id="-1"/>
+    <group eventID="3" id="0">
+        <draw comment="false" x="15" y="15">
+            <group eventID="3" id="-1">
+                <if comment="false" x="26" y="40">
+                    <group eventID="3" id="-1">
+                        <set-font-new comment="false" x="37" y="65">
+                            <font eid="34" id="0"/>
+                        </set-font-new>
+                        <if comment="false" x="37" y="92">
+                            <group eventID="3" id="-1">
+                                <draw-text comment="false" x="48" y="127">
+                                    <int id="0" val="Press &amp;lt;SPACE&amp;gt; to speak with the scientist"/>
+                                    <minus comment="false" id="1" x="0" y="0">
+                                        <screen-wh comment="false" id="0" x="0" y="0">
+                                            <int id="0" val="0"/>
+                                        </screen-wh>
+                                        <int id="1" val="400"/>
+                                    </minus>
+                                    <minus comment="false" id="2" x="0" y="0">
+                                        <screen-wh comment="false" id="0" x="0" y="0">
+                                            <int id="0" val="1"/>
+                                        </screen-wh>
+                                        <int id="1" val="55"/>
+                                    </minus>
+                                </draw-text>
+                            </group>
+                            <and comment="false" id="0" x="0" y="0">
+                                <lesseq comment="false" id="0" x="0" y="0">
+                                    <get-val-48-2 comment="false" id="0" x="0" y="0"/>
+                                    <int id="1" val="70"/>
+                                </lesseq>
+                                <not comment="false" id="1" x="0" y="0">
+                                    <get-val-48-5 comment="false" id="0" x="0" y="0"/>
+                                </not>
+                            </and>
+                        </if>
+                        <else-if comment="false" x="37" y="177">
+                            <group eventID="3" id="-1">
+                                <draw-text comment="false" x="48" y="202">
+                                    <int id="0" val="Press &amp;lt;SPACE&amp;gt; To leave the room"/>
+                                    <minus comment="false" id="1" x="0" y="0">
+                                        <screen-wh comment="false" id="0" x="0" y="0">
+                                            <int id="0" val="0"/>
+                                        </screen-wh>
+                                        <int id="1" val="400"/>
+                                    </minus>
+                                    <minus comment="false" id="2" x="0" y="0">
+                                        <screen-wh comment="false" id="0" x="0" y="0">
+                                            <int id="0" val="1"/>
+                                        </screen-wh>
+                                        <int id="1" val="55"/>
+                                    </minus>
+                                </draw-text>
+                            </group>
+                            <get-val-48-4 comment="false" id="0" x="0" y="0"/>
+                        </else-if>
+                        <else-if comment="false" x="37" y="252">
+                            <group eventID="3" id="-1">
+                                <draw-text comment="false" x="48" y="277">
+                                    <get-val-48-7 comment="false" id="0" x="0" y="0"/>
+                                    <minus comment="false" id="1" x="0" y="0">
+                                        <screen-wh comment="false" id="0" x="0" y="0">
+                                            <int id="0" val="0"/>
+                                        </screen-wh>
+                                        <int id="1" val="900"/>
+                                    </minus>
+                                    <minus comment="false" id="2" x="0" y="0">
+                                        <screen-wh comment="false" id="0" x="0" y="0">
+                                            <int id="0" val="1"/>
+                                        </screen-wh>
+                                        <int id="1" val="55"/>
+                                    </minus>
+                                </draw-text>
+                                <draw-text comment="false" x="48" y="315">
+                                    <int id="0" val="Press &amp;lt;SPACE&amp;gt; To Continue"/>
+                                    <minus comment="false" id="1" x="0" y="0">
+                                        <screen-wh comment="false" id="0" x="0" y="0">
+                                            <int id="0" val="0"/>
+                                        </screen-wh>
+                                        <int id="1" val="900"/>
+                                    </minus>
+                                    <minus comment="false" id="2" x="0" y="0">
+                                        <screen-wh comment="false" id="0" x="0" y="0">
+                                            <int id="0" val="1"/>
+                                        </screen-wh>
+                                        <int id="1" val="35"/>
+                                    </minus>
+                                </draw-text>
+                            </group>
+                            <get-val-48-5 comment="false" id="0" x="0" y="0"/>
+                        </else-if>
+                    </group>
+                    <get-game-val-10 comment="false" id="0" x="0" y="0"/>
+                </if>
+            </group>
+        </draw>
+    </group>
+    <group eventID="3" id="-1"/>
+    <group eventID="4" id="0">
+        <event-key-press-release comment="false" x="15" y="15">
+            <group eventID="4" id="-1">
+                <if comment="false" x="26" y="42">
+                    <group eventID="4" id="-1">
+                        <if comment="false" x="37" y="67">
+                            <group eventID="4" id="-1">
+                                <scene-change-through comment="false" x="48" y="92">
+                                    <scene eid="8" id="0"/>
+                                    <int id="1" val="0"/>
+                                    <int id="2" val="2"/>
+                                </scene-change-through>
+                            </group>
+                            <get-val-48-4 comment="false" id="0" x="0" y="0"/>
+                        </if>
+                    </group>
+                    <get-game-val-10 comment="false" id="0" x="0" y="0"/>
+                </if>
+            </group>
+            <control eid="5" id="0"/>
+            <int id="1" val="0"/>
+        </event-key-press-release>
+    </group>
+    <group eventID="4" id="-1"/>
+    <group eventID="5" id="0">
+        <event-key-press-release comment="false" x="15" y="15">
+            <group eventID="5" id="-1">
+                <if comment="false" x="26" y="42">
+                    <group eventID="5" id="-1">
+                        <if comment="false" x="37" y="67">
+                            <group eventID="5" id="-1">
+                                <set-val-48-6 comment="false" x="48" y="102">
+                                    <randint comment="false" id="0" x="0" y="0">
+                                        <int id="0" val="0"/>
+                                        <minus comment="false" id="1" x="0" y="0">
+                                            <length-list comment="false" id="0" x="0" y="0">
+                                                <get-val-48-3 comment="false" id="0" x="0" y="0"/>
+                                            </length-list>
+                                            <int id="1" val="1"/>
+                                        </minus>
+                                    </randint>
+                                </set-val-48-6>
+                                <set-val-48-7 comment="false" x="48" y="142">
+                                    <get-item comment="false" id="0" x="0" y="0">
+                                        <get-val-48-3 comment="false" id="0" x="0" y="0"/>
+                                        <get-val-48-6 comment="false" id="1" x="0" y="0"/>
+                                    </get-item>
+                                </set-val-48-7>
+                                <set-val-48-5 comment="false" x="48" y="172">
+                                    <true comment="false" id="0" x="0" y="0"/>
+                                </set-val-48-5>
+                            </group>
+                            <and comment="false" id="0" x="0" y="0">
+                                <lesseq comment="false" id="0" x="0" y="0">
+                                    <get-val-48-2 comment="false" id="0" x="0" y="0"/>
+                                    <int id="1" val="70"/>
+                                </lesseq>
+                                <not comment="false" id="1" x="0" y="0">
+                                    <get-val-48-5 comment="false" id="0" x="0" y="0"/>
+                                </not>
+                            </and>
+                        </if>
+                        <else-if comment="false" x="37" y="209">
+                            <group eventID="5" id="-1">
+                                <set-val-48-5 comment="false" x="48" y="244">
+                                    <false comment="false" id="0" x="0" y="0"/>
+                                </set-val-48-5>
+                            </group>
+                            <and comment="false" id="0" x="0" y="0">
+                                <lesseq comment="false" id="0" x="0" y="0">
+                                    <get-val-48-2 comment="false" id="0" x="0" y="0"/>
+                                    <int id="1" val="70"/>
+                                </lesseq>
+                                <get-val-48-5 comment="false" id="1" x="0" y="0"/>
+                            </and>
+                        </else-if>
+                    </group>
+                    <get-game-val-10 comment="false" id="0" x="0" y="0"/>
+                </if>
+            </group>
+            <control eid="5" id="0"/>
+            <int id="1" val="0"/>
+        </event-key-press-release>
+    </group>
+    <group eventID="5" id="-1"/>
+</groups>
