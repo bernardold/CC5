@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<scene depth="2" desc="" eventsnippetid="30" extheight="800" extwidth="1344" extx="-32" exty="-32" format="3.4.0" gravx="-0.0" gravy="0.0" height="736" id="6" name="LevelSelectScreen" revision="" savecount="0" tiled="1" tileh="32" tilew="32" type="standard" width="1280">
+    <layers>
+        <color-bg blue="255" green="255" red="255"/>
+        <background blendMode="normal" customScrollFactor="false" id="1" locked="true" name="LevelSelectBKG" opacity="100" order="2" rid="38" scrollFactorX="1.0" scrollFactorY="1.0" visible="true"/>
+        <layer blendMode="normal" color="100,168,234" id="0" locked="false" name="Selector" opacity="100" order="1" scrollFactorX="1.0" scrollFactorY="1.0" visible="true"/>
+        <layer blendMode="normal" color="0,255,0" id="2" locked="false" name="InfoRef" opacity="100" order="0" scrollFactorX="1.0" scrollFactorY="1.0" visible="true"/>
+    </layers>
+    <joints/>
+    <regions/>
+    <terrainRegions/>
+    <actors>
+        <actor a="0.0" aid="1" c="false" group="3" id="36" name="LevelSelector 1" sx="1.0" sy="1.0" x="806" y="371" z="0"/>
+    </actors>
+    <snippets>
+        <s enabled="true" id="31">
+            <prop id="1" list="0" val="false"/>
+            <prop id="2" list="0" val="0"/>
+            <prop id="3" list="0" val="0"/>
+            <prop id="4" list="0" val="0"/>
+            <prop id="5" list="0" val="0"/>
+            <prop id="6" list="0" val="0"/>
+            <prop id="7" list="0" val="0"/>
+        </s>
+    </snippets>
+    <terrain/>
+    <atlases members="0,1,2,3," retainAtlases="false"/>
+</scene>
